@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dgkok5pqvceas"]
+
+[ext_resource type="PackedScene" uid="uid://dktb8xjd4u6ce" path="res://level1.blend" id="1_y42cj"]
+
+[node name="level1" unique_id=1425837171 instance=ExtResource("1_y42cj")]
+
+[node name="门" parent="." index="0" unique_id=848119441]
+visible = false
+layers = 2
+
+[node name="CollisionShape3D" parent="门/StaticBody3D" parent_id_path=PackedInt32Array(684462594) index="0" unique_id=1351027106]
+disabled = true
+
+[node name="门_041" parent="." index="1" unique_id=706963964]
+layers = 2
+
+[node name="门_042" parent="." index="2" unique_id=1334205732]
+visible = false
