@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dqmj57mjs6pxc"]
+
+[ext_resource type="Script" uid="uid://c815i33ryxx0j" path="res://scripts/depth_bar.gd" id="1_g2rbc"]
+[ext_resource type="Texture2D" uid="uid://dn6aljemxsygs" path="res://assets/depthbar.png" id="2_y3khx"]
+[ext_resource type="Texture2D" uid="uid://drdavdy2dax6w" path="res://assets/septhdot.png" id="3_hbjo7"]
+[ext_resource type="FontFile" uid="uid://kmslcl1wq3a3" path="res://assets/fonts/VonwaonBitmap-16px.ttf" id="4_gxi2d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ilo1b"]
+font = ExtResource("4_gxi2d")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="Depth_bar" type="CanvasLayer" unique_id=564960348]
+script = ExtResource("1_g2rbc")
+
+[node name="Depth_bar" type="TextureRect" parent="." unique_id=2073643950]
+offset_left = 95.99999
+offset_top = 355.99997
+offset_right = 1896.0
+offset_bottom = 599.0
+rotation = 1.5707964
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_y3khx")
+
+[node name="Depth_dot" type="TextureRect" parent="." unique_id=1112038069]
+offset_left = 39.0
+offset_top = 655.0
+offset_right = 93.0
+offset_bottom = 711.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_hbjo7")
+
+[node name="Label" type="Label" parent="." unique_id=1568240984]
+offset_left = 22.0
+offset_top = 736.0
+offset_right = 133.0
+offset_bottom = 768.0
+text = "5米"
+label_settings = SubResource("LabelSettings_ilo1b")
+horizontal_alignment = 1
+vertical_alignment = 1
