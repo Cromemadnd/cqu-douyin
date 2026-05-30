@@ -11,8 +11,24 @@ var current_state: State = State.IDLE
 @onready var ground_check: RayCast3D = $RayCast3D 
 @onready var sprite: AnimatedSprite3D = %PlayerSprite
 
+# === 音效组件初始化 ===
+var footstep_player: AudioStreamPlayer3D
+
 # 全局记录当前帧的移动输入，供状态机精准判断
 var last_move_input: float = 0.0
+
+func _ready() -> void:
+	# 动态创建 3D 音效播放器，这样不需要手动去编辑器里挂载节点
+	footstep_player = AudioStreamPlayer3D.new()
+	add_child(footstep_player)
+	
+	# 加载脚步声音资源
+	footstep_player.stream = load("res://assets/snd/footstep.mp3")
+	
+	# 确保音频循环打开（Godot 4 MP3 动态设置循环）
+	if footstep_player.stream:
+		footstep_player.stream.loop = true
+
 
 func _physics_process(delta: float) -> void:
 	# 1. 物理与输入处理
@@ -37,6 +53,9 @@ func _physics_process(delta: float) -> void:
 	
 	# 3. 动画与朝向处理
 	tick_animation_and_flip(last_move_input)
+	
+	# 4. 音效状态机同步
+	handle_footstep_sound()
 
 
 # ==================== 物理与控制核心逻辑 ====================
@@ -113,9 +132,23 @@ func tick_animation_and_flip(move_input: float) -> void:
 		State.IDLE:
 			if sprite.animation != "idle": 
 				sprite.play("idle")
+				
 		State.RUN:
 			if sprite.animation != "run": 
 				sprite.play("run")
 		State.JUMP:
 			if sprite.animation != "jump": 
 				sprite.play("jump")
+
+
+# ==================== 音效控制逻辑 ====================
+
+func handle_footstep_sound() -> void:
+	# 只有在 RUN 状态下才播放脚步声
+	if current_state == State.RUN:
+		if not footstep_player.playing:
+			footstep_player.play()
+	else:
+		# IDLE 或 JUMP 状态下，如果脚步声还在放，立马掐断
+		if footstep_player.playing:
+			footstep_player.stop()

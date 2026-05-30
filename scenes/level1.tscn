@@ -1,12 +1,14 @@
 [gd_scene format=4 uid="uid://8rajqurshojr"]
 
-[ext_resource type="Script" uid="uid://dku08fkwmyxjd" path="res://level_1.gd" id="1_i2041"]
-[ext_resource type="PackedScene" uid="uid://dgkok5pqvceas" path="res://level1_map.tscn" id="2_i2041"]
-[ext_resource type="Script" uid="uid://c3ekxdkqbm3ro" path="res://player.gd" id="3_usj0q"]
-[ext_resource type="Texture2D" uid="uid://cw6uoyj5vvk7v" path="res://assets/player_idle_spritesheet.png" id="4_5j5gb"]
-[ext_resource type="Texture2D" uid="uid://djn5rb0eg7i2d" path="res://assets/player_jump_spritesheet.png" id="5_mx85b"]
-[ext_resource type="Texture2D" uid="uid://b5fcrdwyncyxv" path="res://assets/player_run_spritesheet.png" id="6_hx44q"]
-[ext_resource type="Shader" uid="uid://bq75i4llix6sx" path="res://glitch.gdshader" id="7_n8vhr"]
+[ext_resource type="Script" uid="uid://dku08fkwmyxjd" path="res://scripts/level_1.gd" id="1_bbk5w"]
+[ext_resource type="PackedScene" uid="uid://dgkok5pqvceas" path="res://scenes/level1_map.tscn" id="2_i2041"]
+[ext_resource type="Script" uid="uid://dps1lbdpmwtfo" path="res://scripts/player_level1.gd" id="2_xy4tn"]
+[ext_resource type="Texture2D" uid="uid://cw6uoyj5vvk7v" path="res://assets/sprites/player/player_idle_spritesheet.png" id="4_5j5gb"]
+[ext_resource type="Texture2D" uid="uid://djn5rb0eg7i2d" path="res://assets/sprites/player/player_jump_spritesheet.png" id="5_mx85b"]
+[ext_resource type="Texture2D" uid="uid://b5fcrdwyncyxv" path="res://assets/sprites/player/player_run_spritesheet.png" id="6_hx44q"]
+[ext_resource type="Script" uid="uid://wboa77tbjiy0" path="res://scripts/deadzone.gd" id="6_i2041"]
+[ext_resource type="Script" uid="uid://drpe2mrrwb74e" path="res://scripts/interactable.gd" id="7_conm7"]
+[ext_resource type="Shader" uid="uid://bq75i4llix6sx" path="res://assets/shaders/glitch.gdshader" id="7_n8vhr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0, 0, 0, 1)
@@ -157,19 +159,32 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_jka67")
 size = Vector3(4.32, 0, 7.68)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_conm7"]
+
 [sub_resource type="Environment" id="Environment_i5arm"]
 background_mode = 1
 background_color = Color(1, 1, 1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtpvm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v7umd"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crycw"]
+size = Vector3(6, 2, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_crycw"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wc5p8"]
 shader = ExtResource("7_n8vhr")
-shader_parameter/grain_amount = 0.05
-shader_parameter/grain_size = 1.0
-shader_parameter/flicker_intensity = 0.02
-shader_parameter/scratch_intensity = 0.1
+shader_parameter/grain_amount = 0.5
+shader_parameter/grain_size = 45.0
+shader_parameter/flicker_intensity = 0.030000001425
+shader_parameter/scratch_intensity = 0.12
 
 [node name="Node3D" type="Node3D" unique_id=628576255]
-script = ExtResource("1_i2041")
+script = ExtResource("1_bbk5w")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=309837897]
 operation = 1
@@ -194,8 +209,9 @@ axis_lock_angular_z = true
 slide_on_ceiling = false
 wall_min_slide_angle = 3.1415927
 platform_on_leave = 2
-script = ExtResource("3_usj0q")
+script = ExtResource("2_xy4tn")
 jump_force = 8.0
+gravity = 12.0
 
 [node name="PlayerSprite" type="AnimatedSprite3D" parent="Player" unique_id=676583410]
 unique_name_in_owner = true
@@ -206,13 +222,18 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="Collision" type="CollisionShape3D" parent="Player" unique_id=1156648663]
-transform = Transform3D(-0.99999994, -8.742277e-08, 3.821371e-15, 0, -4.3711385e-08, -1, 8.742277e-08, -0.99999994, 4.371139e-08, 0, 0.1, 0)
+transform = Transform3D(-0.99999994, -8.742277e-08, 3.821371e-15, 0, -4.3711385e-08, -1, 8.742277e-08, -0.99999994, 4.371139e-08, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_r3fl7")
 
 [node name="Slicer" type="MeshInstance3D" parent="Player" unique_id=167228766]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, 0)
 layers = 2
 mesh = SubResource("BoxMesh_noarx")
+
+[node name="Area3D" type="Area3D" parent="Player/Slicer" unique_id=1288483347]
+
+[node name="SlicerCollision" type="CollisionShape3D" parent="Player/Slicer/Area3D" unique_id=1831056093]
+shape = SubResource("BoxShape3D_conm7")
 
 [node name="2DCameraFront" type="Camera3D" parent="Player" unique_id=2061233053]
 unique_name_in_owner = true
@@ -228,20 +249,69 @@ far = 100.0
 [node name="RayCast3D" type="RayCast3D" parent="Player" unique_id=665984414]
 target_position = Vector3(0, -0.5, 0)
 
-[node name="3DCamera" type="Camera3D" parent="Player" unique_id=1109545932]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.8212289, 0.5705989, 0, -0.5705989, 0.8212289, -0.118927, 6.3915186, 12.951379)
-cull_mask = 2
+[node name="level1" parent="." unique_id=1425837171 instance=ExtResource("2_i2041")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=1051151805]
-transform = Transform3D(1, 0, 0, 0, 0.13917312, 0.9902681, 0, -0.9902681, 0.13917312, 0, -1.5080771, 0)
-layers = 2
+[node name="Interactable" type="Node3D" parent="level1" unique_id=33450346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8111506, 4.5673914, -27.3903)
+script = ExtResource("7_conm7")
 
-[node name="level1(4)" parent="." unique_id=1425837171 instance=ExtResource("2_i2041")]
+[node name="Area3D" type="Area3D" parent="level1/Interactable" unique_id=1072160745]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level1/Interactable/Area3D" unique_id=589906780]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.9915061, -2.1187449, -7.558819)
+shape = SubResource("BoxShape3D_mtpvm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="level1/Interactable" unique_id=1602459389]
+
+[node name="Control" type="Control" parent="level1/Interactable/CanvasLayer" unique_id=932361028]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="level1/Interactable/CanvasLayer/Control" unique_id=387296338]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 87.0
+offset_right = 1475.9788
+offset_bottom = 477.0
+expand_mode = 1
+
+[node name="Label" type="Label" parent="level1/Interactable/CanvasLayer/Control" unique_id=690117321]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 196.0
+offset_right = 1340.0
+offset_bottom = 341.0
+text = "测试文字"
+label_settings = SubResource("LabelSettings_v7umd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="level1/Interactable" unique_id=397048664]
+
+[node name="Deadzone" type="Area3D" parent="." unique_id=537855657]
+script = ExtResource("6_i2041")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Deadzone" unique_id=1018470260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0471935, -6.0738344, -69.23505)
+shape = SubResource("BoxShape3D_crycw")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Deadzone" unique_id=1194346003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5551262, -24.52199, -121.63548)
+shape = SubResource("BoxShape3D_crycw")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Deadzone" unique_id=100592504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.181484, 0)
+shape = SubResource("WorldBoundaryShape3D_crycw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=649414428]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=2138105134]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_wc5p8")
-offset_right = 1920.0
+offset_left = 3.0
+offset_right = 1923.0
 offset_bottom = 1080.0
+
+[connection signal="body_entered" from="Deadzone" to="Deadzone" method="_on_body_entered"]

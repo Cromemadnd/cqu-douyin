@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lv2qreq1o5mo"
-path.s3tc="res://.godot/imported/door_opened.png-044166483a2a5c362c418cfa4f131eba.s3tc.ctex"
+uid="uid://bcyfj73k1ied6"
+path.s3tc="res://.godot/imported/billboard.png-bc9d6ee522d129c5918344b774405dc4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/door_opened.png"
-dest_files=["res://.godot/imported/door_opened.png-044166483a2a5c362c418cfa4f131eba.s3tc.ctex"]
+source_file="res://assets/sprites/billboard.png"
+dest_files=["res://.godot/imported/billboard.png-bc9d6ee522d129c5918344b774405dc4.s3tc.ctex"]
 
 [params]
 

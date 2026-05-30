@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://c4juavthaugge"]
 
-[ext_resource type="Script" uid="uid://c3ekxdkqbm3ro" path="res://player.gd" id="1_a202f"]
-[ext_resource type="Script" uid="uid://u5kgt1apbpd2" path="res://node_3d.gd" id="1_noarx"]
-[ext_resource type="Texture2D" uid="uid://cw6uoyj5vvk7v" path="res://assets/player_idle_spritesheet.png" id="3_r3fl7"]
-[ext_resource type="Texture2D" uid="uid://djn5rb0eg7i2d" path="res://assets/player_jump_spritesheet.png" id="4_i5arm"]
-[ext_resource type="Texture2D" uid="uid://b5fcrdwyncyxv" path="res://assets/player_run_spritesheet.png" id="5_wc5p8"]
-[ext_resource type="PackedScene" uid="uid://imv31fr7enw" path="res://map.tscn" id="6_i5arm"]
-[ext_resource type="Shader" uid="uid://bq75i4llix6sx" path="res://glitch.gdshader" id="7_wc5p8"]
+[ext_resource type="Script" uid="uid://c3ekxdkqbm3ro" path="res://scripts/player.gd" id="1_a202f"]
+[ext_resource type="Script" uid="uid://u5kgt1apbpd2" path="res://scripts/node_3d.gd" id="1_noarx"]
+[ext_resource type="Texture2D" uid="uid://cw6uoyj5vvk7v" path="res://assets/sprites/player/player_idle_spritesheet.png" id="3_r3fl7"]
+[ext_resource type="Texture2D" uid="uid://djn5rb0eg7i2d" path="res://assets/sprites/player/player_jump_spritesheet.png" id="4_i5arm"]
+[ext_resource type="Texture2D" uid="uid://b5fcrdwyncyxv" path="res://assets/sprites/player/player_run_spritesheet.png" id="5_wc5p8"]
+[ext_resource type="PackedScene" uid="uid://imv31fr7enw" path="res://scenes/level_demo_map.tscn" id="6_i5arm"]
+[ext_resource type="Shader" uid="uid://bq75i4llix6sx" path="res://assets/shaders/glitch.gdshader" id="7_wc5p8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0, 0, 0, 1)

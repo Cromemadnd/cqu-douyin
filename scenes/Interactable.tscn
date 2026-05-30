@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1ps0yo3j8mom"]
 
-[ext_resource type="Script" uid="uid://drpe2mrrwb74e" path="res://interactable.gd" id="1_msfch"]
+[ext_resource type="Script" uid="uid://drpe2mrrwb74e" path="res://scripts/interactable.gd" id="1_msfch"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mtpvm"]
 
