@@ -116,6 +116,7 @@ func _open_level_door() -> void:
 	if door == null:
 		return
 	door.hide()
+	%CSGMeshDoor.hide()
 	_disable_collision_shapes(door)
 
 
@@ -146,7 +147,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		is_player_near = true
 		if not interaction_locked or type == InteractType.DOOR:
 			ui_anchor.show()
-		print("player near")
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body == %Player:
@@ -157,10 +157,8 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area == %SlicerCollisionArea:
 		is_looked_at = true
 		icon_sprite.show()
-		print("player look at")
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
 	if area == %SlicerCollisionArea:
 		is_looked_at = false
 		icon_sprite.hide()
-		print("player NO look at")

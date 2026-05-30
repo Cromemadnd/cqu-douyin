@@ -35,7 +35,9 @@ const ENDING_MEMORY_LINES: Array[String] = [
 	"它们是你在绝境中，重新凝聚起的清醒、敢于永恒尝试下去的勇气、与活下去的意志。",
 	"迷宫已碎。",
 	"欢迎回到这个立体、复杂、却又如此斑斓、值得你再次眷恋的真实世界。",
-	"【患者已苏醒】"
+	"【患者已苏醒】",
+	"",
+	"【按E继续】"
 ]
 
 
@@ -50,8 +52,7 @@ static func play_level_switch(tree: SceneTree, target_scene: String = "") -> voi
 
 static func play_ending(tree: SceneTree) -> void:
 	await _play_terminal_lines(tree, ENDING_STATUS_LINES, 0.8, 0.8)
-	await _play_terminal_lines(tree, ENDING_MEMORY_LINES, 0.24, 0.7, 34, true)
-	await _play_eye_open(tree)
+	await _play_terminal_lines(tree, ENDING_MEMORY_LINES, 0.24, 0.7, 34, true, "", true)
 	await _play_video(tree, ENDING_VIDEO)
 	tree.change_scene_to_file(TITLE_SCENE)
 
@@ -92,7 +93,8 @@ static func _play_terminal_lines(
 	hold_time: float,
 	font_size: int = 44,
 	compact: bool = false,
-	target_scene: String = ""
+	target_scene: String = "",
+	wait_for_interact: bool = false
 ) -> void:
 	var overlay := _build_overlay()
 	var root := tree.root
@@ -113,6 +115,10 @@ static func _play_terminal_lines(
 		await tree.create_timer(line_delay).timeout
 
 	await tree.create_timer(hold_time).timeout
+	if wait_for_interact:
+		await _wait_for_interact(tree)
+		overlay.queue_free()
+		return
 	if target_scene != "":
 		await _change_scene_under_overlay(tree, overlay, target_scene)
 	await _fade_out(tree, overlay)
@@ -133,54 +139,11 @@ static func _change_scene_under_overlay(tree: SceneTree, overlay: CanvasLayer, t
 	await tree.process_frame
 
 
-static func _play_eye_open(tree: SceneTree) -> void:
-	var overlay := CanvasLayer.new()
-	overlay.layer = 128
-	overlay.name = "EyeOpenOverlay"
-	tree.root.add_child(overlay)
-
-	var white := ColorRect.new()
-	white.color = Color(1, 1, 1, 1)
-	white.set_anchors_preset(Control.PRESET_FULL_RECT)
-	overlay.add_child(white)
-
-	var top_lid := ColorRect.new()
-	top_lid.color = Color(0, 0, 0, 1)
-	overlay.add_child(top_lid)
-
-	var bottom_lid := ColorRect.new()
-	bottom_lid.color = Color(0, 0, 0, 1)
-	overlay.add_child(bottom_lid)
-
-	var wake_label := Label.new()
-	wake_label.label_settings = _make_label_settings(56, Color(0, 0, 0, 1))
-	wake_label.text = "【患者已苏醒】"
-	wake_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	wake_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	wake_label.set_anchors_preset(Control.PRESET_FULL_RECT)
-	wake_label.modulate.a = 0.0
-	overlay.add_child(wake_label)
-
-	var viewport_size := tree.root.get_visible_rect().size
-	top_lid.anchor_right = 1.0
-	top_lid.offset_left = 0.0
-	top_lid.offset_top = 0.0
-	top_lid.offset_right = 0.0
-	top_lid.offset_bottom = viewport_size.y * 0.5
-	bottom_lid.anchor_right = 1.0
-	bottom_lid.offset_left = 0.0
-	bottom_lid.offset_top = viewport_size.y * 0.5
-	bottom_lid.offset_right = 0.0
-	bottom_lid.offset_bottom = viewport_size.y
-
-	var tween := tree.create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(top_lid, "offset_bottom", 0.0, 2.0).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(bottom_lid, "offset_top", viewport_size.y, 2.0).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(wake_label, "modulate:a", 1.0, 1.3).set_delay(1.0)
-	await tween.finished
-	await tree.create_timer(1.2).timeout
-	await _fade_out(tree, overlay, 1.1)
+static func _wait_for_interact(tree: SceneTree) -> void:
+	while true:
+		await tree.process_frame
+		if Input.is_action_just_pressed("interact"):
+			return
 
 
 static func _build_overlay() -> CanvasLayer:
