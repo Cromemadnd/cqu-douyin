@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://1ps0yo3j8mom"]
+
+[ext_resource type="Script" uid="uid://drpe2mrrwb74e" path="res://interactable.gd" id="1_msfch"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtpvm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v7umd"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="Interactable" type="Node3D" unique_id=33450346]
+script = ExtResource("1_msfch")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1072160745]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=589906780]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_mtpvm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1602459389]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=932361028]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=387296338]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 87.0
+offset_right = 1475.9788
+offset_bottom = 477.0
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=690117321]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 196.0
+offset_right = 1340.0
+offset_bottom = 341.0
+text = "测试文字"
+label_settings = SubResource("LabelSettings_v7umd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=397048664]
