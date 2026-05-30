@@ -17,6 +17,7 @@ enum InteractType { LEVER, SIGNBOARD, KEY }
 @onready var icon_sprite = $Sprite3D
 
 # 状态变量
+var lever_on: bool = false
 var is_player_near: bool = false
 var is_looked_at: bool = false
 var interacted: bool = false
@@ -31,6 +32,7 @@ func _ready():
 	icon_sprite.hide()
 	text_rect.texture = textRect_texture
 	bubble_label.text = sign_text
+	icon_sprite.texture = icon_sprite
 
 func _process(_delta):
 	pass
@@ -40,13 +42,13 @@ func _input(event):
 	if is_player_near and event.is_action_pressed("interact"):
 		match type:
 			InteractType.LEVER:
-				pass
+				lever_on = !lever_on
 			
 			InteractType.SIGNBOARD:
 				pass
 				
 			InteractType.KEY:
-				pass
+				interacted = true
 
 # 信号回调
 func _on_body_entered(body):
