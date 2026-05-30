@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://imv31fr7enw"]
+
+[ext_resource type="PackedScene" uid="uid://bpf8tobgmedru" path="res://map.blend" id="1_c7s6e"]
+
+[node name="map" unique_id=1051142398 instance=ExtResource("1_c7s6e")]
+
+[node name="立方体_004" parent="." index="0" unique_id=782376067]
+layers = 2
+
+[node name="立方体" parent="." index="1" unique_id=1060888787]
+layers = 2
+
+[node name="立方体_001" parent="." index="2" unique_id=1975274826]
+layers = 2
+
+[node name="立方体_002" parent="." index="3" unique_id=1815408936]
+layers = 2
+
+[node name="立方体_003" parent="." index="4" unique_id=1914836020]
+layers = 2
+
+[node name="柱体" parent="." index="5" unique_id=1748870414]
+layers = 2

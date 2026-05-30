@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://c66wte6fx7ltw"]
+
+[ext_resource type="Script" uid="uid://c3ekxdkqbm3ro" path="res://player.gd" id="1_hbghi"]
+[ext_resource type="Script" uid="uid://dw2v5soduopps" path="res://mesh_instance_2d_mask.gd" id="2_hn12h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_noarx"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ihfcg"]
+material = SubResource("StandardMaterial3D_noarx")
+height = 0.001
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rka8t"]
+height = 0.001
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5hph3"]
+material = SubResource("StandardMaterial3D_a0tk4")
+size = Vector3(2.16, 0, 3.84)
+
+[sub_resource type="Gradient" id="Gradient_a202f"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j7kpp"]
+gradient = SubResource("Gradient_a202f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjebc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a202f"]
+next_pass = SubResource("ShaderMaterial_bjebc")
+cull_mode = 2
+albedo_texture = SubResource("GradientTexture2D_j7kpp")
+
+[sub_resource type="BoxMesh" id="BoxMesh_5rr72"]
+material = SubResource("StandardMaterial3D_a202f")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gyffv"]
+custom_solver_bias = 1.0
+size = Vector3(10, 1, 10)
+
+[sub_resource type="Shader" id="Shader_1pe0h"]
+code = "shader_type spatial;
+// 1. 【核心】cull_disabled 必须开启！这样显卡才会去画被切开后的内壁（背面）
+// unshaded 保证填充纯色，不受光照干扰
+render_mode unshaded, cull_disabled;
+
+uniform vec4 fill_color : source_color = vec4(0.0, 1.0, 0.0, 1.0); // 填充纯色
+uniform float slice_distance = 5.0; // 5米切面
+
+void fragment() {
+	// 获取当前像素在相机空间下的 Z 轴深度
+	float depth = -VERTEX.z;
+	
+	// 2. 【枪毙逻辑】彻底解决“过近、过远像素没消失”的问题
+	// 任何比 5 米近的像素（包含物体的正面外壳），统统人间蒸发！
+	if (depth < slice_distance) {
+		discard;
+	}
+	
+	// 3. 【剩余像素处理】此时能活下来的，统统全都是距离大于 5 米的像素。
+	// 也就是物体的内壁后表面。
+	
+	// 我们利用 FRONT_FACING 判断：如果我是背面（!FRONT_FACING）
+	if (!FRONT_FACING) {
+		// 它的存在就证明 5 米处的空间是实心的，我们把它逆向投影并涂成实心绿色！
+		ALBEDO = fill_color.rgb;
+	} else {
+		// 【可选项】
+		// 如果是大于 5 米的正面像素（比如切片后面的其他完整 3D 物体）
+		// 如果你们不想看到它，就直接 discard 枪毙；如果想当成背景就保留
+		discard; 
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jka67"]
+render_priority = 0
+shader = SubResource("Shader_1pe0h")
+shader_parameter/fill_color = Color(0, 1, 0, 1)
+shader_parameter/slice_distance = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_27bay"]
+material = SubResource("ShaderMaterial_jka67")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sof0w"]
+material = SubResource("ShaderMaterial_jka67")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbghi"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ggavl"]
+material = SubResource("StandardMaterial3D_hbghi")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ubhxj"]
+custom_solver_bias = 1.0
+size = Vector3(1, 2, 1)
+
+[node name="Node3D" type="Node3D" unique_id=1272798049]
+
+[node name="Player" type="RigidBody3D" parent="." unique_id=463193894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5080771, 0)
+script = ExtResource("1_hbghi")
+
+[node name="2DSprite" type="MeshInstance3D" parent="Player" unique_id=1354455163]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ihfcg")
+
+[node name="CollisionSprite" type="CollisionShape3D" parent="Player" unique_id=971579691]
+transform = Transform3D(-0.99999994, -8.742277e-08, 3.821371e-15, 0, -4.3711385e-08, -1, 8.742277e-08, -0.99999994, 4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_rka8t")
+
+[node name="3DMask" type="MeshInstance3D" parent="Player" unique_id=472335326]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_5hph3")
+
+[node name="2DCameraFront" type="Camera3D" parent="Player" unique_id=1112019079]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+cull_mask = 1047553
+projection = 1
+current = true
+size = 5.0
+near = 0.001
+far = 100.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Player" unique_id=361891699]
+target_position = Vector3(0, -0.5, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player" unique_id=411512231]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+layers = 3
+
+[node name="3DCamera" type="Camera3D" parent="." unique_id=940416701]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.8746282, 0.48479435, 0, -0.48479435, 0.8746282, 0.5579634, 3.433062, 8.625837)
+cull_mask = 1047554
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1029885706]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D" unique_id=819811242]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=1293285021]
+transform = Transform3D(0.999998, -0.0018066077, 0.0008602912, 0.0018061833, 0.9999982, 0.00048818337, -0.000861182, -0.0004866102, 0.9999995, 0, 0, 0)
+layers = 3
+mesh = SubResource("BoxMesh_5rr72")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D" unique_id=1561339179]
+shape = SubResource("BoxShape3D_gyffv")
+
+[node name="MeshInstance2DMaskFront" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=492856476]
+transform = Transform3D(0.999998, -0.0018066077, 0.0008602912, 0.0018061833, 0.9999982, 0.00048818337, -0.000861182, -0.0004866102, 0.9999995, 0, 1, 3)
+mesh = SubResource("BoxMesh_27bay")
+script = ExtResource("2_hn12h")
+
+[node name="MeshInstance2DMaskBack" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=109767561]
+transform = Transform3D(0.99999195, -0.003613627, 0.0017196983, 0.003611939, 0.9999929, 0.0009779194, -0.0017232408, -0.0009716635, 0.9999981, 0, 1, 3)
+mesh = SubResource("BoxMesh_sof0w")
+script = ExtResource("2_hn12h")
+
+[node name="MeshInstance3DMask" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=972664347]
+transform = Transform3D(0.99999195, -0.003613627, 0.0017196983, 0.003611939, 0.9999929, 0.0009779194, -0.0017232408, -0.0009716635, 0.9999981, 0, 1, 3)
+layers = 2
+mesh = SubResource("BoxMesh_ggavl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/StaticBody3D" unique_id=553098563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+shape = SubResource("BoxShape3D_ubhxj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=943696622]
+transform = Transform3D(1, 0, 0, 0, 0.38965446, 0.92096114, 0, -0.92096114, 0.38965446, 0, 0, 0)
+layers = 3
+light_cull_mask = 4294966274
+shadow_enabled = true
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Node3D" unique_id=862949188]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D2" unique_id=1546124180]
+transform = Transform3D(0.999998, -0.0018066077, 0.0008602912, 0.0018061833, 0.9999982, 0.00048818337, -0.000861182, -0.0004866102, 0.9999995, 0, 0, 0)
+layers = 3
+mesh = SubResource("BoxMesh_5rr72")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D2" unique_id=1041182728]
+shape = SubResource("BoxShape3D_gyffv")

@@ -1,0 +1,247 @@
+[gd_scene format=3 uid="uid://c4juavthaugge"]
+
+[ext_resource type="Script" uid="uid://c3ekxdkqbm3ro" path="res://player.gd" id="1_a202f"]
+[ext_resource type="Script" uid="uid://u5kgt1apbpd2" path="res://node_3d.gd" id="1_noarx"]
+[ext_resource type="Texture2D" uid="uid://cw6uoyj5vvk7v" path="res://player_idle_spritesheet.png" id="3_r3fl7"]
+[ext_resource type="Texture2D" uid="uid://djn5rb0eg7i2d" path="res://player_jump_spritesheet.png" id="4_i5arm"]
+[ext_resource type="Texture2D" uid="uid://b5fcrdwyncyxv" path="res://player_run_spritesheet.png" id="5_wc5p8"]
+[ext_resource type="PackedScene" uid="uid://imv31fr7enw" path="res://map.tscn" id="6_i5arm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsk3o"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jka67"]
+atlas = ExtResource("3_r3fl7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5arm"]
+atlas = ExtResource("3_r3fl7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc5p8"]
+atlas = ExtResource("3_r3fl7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsk3o"]
+atlas = ExtResource("3_r3fl7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4arys"]
+atlas = ExtResource("4_i5arm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iypd"]
+atlas = ExtResource("4_i5arm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tereu"]
+atlas = ExtResource("5_wc5p8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdqbm"]
+atlas = ExtResource("5_wc5p8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imku0"]
+atlas = ExtResource("5_wc5p8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlxy5"]
+atlas = ExtResource("5_wc5p8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v7ru"]
+atlas = ExtResource("5_wc5p8")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcnuu"]
+atlas = ExtResource("5_wc5p8")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a0tk4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jka67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5arm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc5p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsk3o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4arys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iypd")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tereu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdqbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imku0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlxy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v7ru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcnuu")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
+size = Vector3(0.6, 0, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_noarx"]
+material = SubResource("StandardMaterial3D_jka67")
+size = Vector3(2.16, 0, 3.84)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
+next_pass = SubResource("ShaderMaterial_noarx")
+cull_mode = 2
+albedo_color = Color(0.0478005, 0.4299786, 0.4299786, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4xowi"]
+material = SubResource("StandardMaterial3D_wc5p8")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a202f"]
+custom_solver_bias = 1.0
+size = Vector3(10, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r3fl7"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
+custom_solver_bias = 1.0
+size = Vector3(1, 2, 1)
+
+[node name="Node3D" type="Node3D" unique_id=628576255]
+script = ExtResource("1_noarx")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=309837897]
+
+[node name="CSGPlayer" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1301314500]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+size = Vector3(19.2, 10.8, 0.01)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CSGCombiner3D/CSGPlayer" unique_id=290869204]
+transform = Transform3D(1, 0, 0, 0, 0.60395944, 0.7970151, 0, -0.7970151, 0.60395944, 0, 0, 5.47029)
+
+[node name="CSGBox" type="CSGBox3D" parent="CSGCombiner3D" unique_id=974368394]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
+operation = 1
+size = Vector3(1, 2, 1)
+material = SubResource("StandardMaterial3D_i5arm")
+
+[node name="CSGGround" type="CSGBox3D" parent="CSGCombiner3D/CSGBox" unique_id=1292904321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -3)
+size = Vector3(10, 1, 10)
+material = SubResource("StandardMaterial3D_jsk3o")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=609404391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5080771, 0)
+wall_min_slide_angle = 3.1415927
+platform_on_leave = 2
+script = ExtResource("1_a202f")
+
+[node name="PlayerSprite" type="AnimatedSprite3D" parent="Player" unique_id=676583410]
+unique_name_in_owner = true
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_a0tk4")
+animation = &"run"
+autoplay = "idle"
+frame_progress = 0.4912832
+
+[node name="Collision" type="CollisionShape3D" parent="Player" unique_id=1156648663]
+transform = Transform3D(-0.99999994, -8.742277e-08, 3.821371e-15, 0, -4.3711385e-08, -1, 8.742277e-08, -0.99999994, 4.371139e-08, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_r3fl7")
+
+[node name="Slicer" type="MeshInstance3D" parent="Player" unique_id=167228766]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_noarx")
+
+[node name="2DCameraFront" type="Camera3D" parent="Player" unique_id=2061233053]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+cull_mask = 1047553
+projection = 1
+current = true
+size = 10.0
+near = 0.001
+far = 100.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Player" unique_id=665984414]
+target_position = Vector3(0, -0.5, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player" unique_id=1066729125]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+visible = false
+layers = 3
+
+[node name="3DCamera" type="Camera3D" parent="." unique_id=1109545932]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.8746282, 0.48479435, 0, -0.48479435, 0.8746282, 0.5579634, 3.433062, 8.625837)
+cull_mask = 1047554
+
+[node name="map" parent="." unique_id=1051142398 instance=ExtResource("6_i5arm")]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=950217461]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D" unique_id=425523871]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=1195653571]
+transform = Transform3D(0.999998, -0.0018066077, 0.0008602912, 0.0018061833, 0.9999982, 0.00048818337, -0.000861182, -0.0004866102, 0.9999995, 0, 0, 0)
+layers = 2
+mesh = SubResource("BoxMesh_4xowi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D" unique_id=794340839]
+shape = SubResource("BoxShape3D_a202f")
+
+[node name="MeshInstance3DMask" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=461638612]
+transform = Transform3D(0.99999195, -0.003613627, 0.0017196983, 0.003611939, 0.9999929, 0.0009779194, -0.0017232408, -0.0009716635, 0.9999981, 0, 1.5, 3)
+layers = 2
+mesh = SubResource("BoxMesh_r3fl7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/StaticBody3D" unique_id=1627047495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 3)
+shape = SubResource("BoxShape3D_noarx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1051151805]
+transform = Transform3D(1, 0, 0, 0, 0.1391731, 0.99026805, 0, -0.99026805, 0.1391731, 0, 0, 0)
+layers = 2
