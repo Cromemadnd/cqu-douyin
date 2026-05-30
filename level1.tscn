@@ -1,62 +1,62 @@
-[gd_scene format=3 uid="uid://c4juavthaugge"]
+[gd_scene format=3 uid="uid://bfafekp0ueche"]
 
-[ext_resource type="Script" uid="uid://c3ekxdkqbm3ro" path="res://player.gd" id="1_a202f"]
-[ext_resource type="Script" uid="uid://u5kgt1apbpd2" path="res://node_3d.gd" id="1_noarx"]
-[ext_resource type="Texture2D" uid="uid://cw6uoyj5vvk7v" path="res://assets/player_idle_spritesheet.png" id="3_r3fl7"]
-[ext_resource type="Texture2D" uid="uid://djn5rb0eg7i2d" path="res://assets/player_jump_spritesheet.png" id="4_i5arm"]
-[ext_resource type="Texture2D" uid="uid://b5fcrdwyncyxv" path="res://assets/player_run_spritesheet.png" id="5_wc5p8"]
-[ext_resource type="PackedScene" uid="uid://imv31fr7enw" path="res://map.tscn" id="6_i5arm"]
-[ext_resource type="Shader" uid="uid://bq75i4llix6sx" path="res://glitch.gdshader" id="7_wc5p8"]
+[ext_resource type="Script" uid="uid://u5kgt1apbpd2" path="res://node_3d.gd" id="1_i2041"]
+[ext_resource type="Script" uid="uid://c3ekxdkqbm3ro" path="res://player.gd" id="3_usj0q"]
+[ext_resource type="Texture2D" uid="uid://cw6uoyj5vvk7v" path="res://assets/player_idle_spritesheet.png" id="4_5j5gb"]
+[ext_resource type="Texture2D" uid="uid://djn5rb0eg7i2d" path="res://assets/player_jump_spritesheet.png" id="5_mx85b"]
+[ext_resource type="Texture2D" uid="uid://b5fcrdwyncyxv" path="res://assets/player_run_spritesheet.png" id="6_hx44q"]
+[ext_resource type="PackedScene" uid="uid://c66wte6fx7ltw" path="res://level_1.tscn" id="7_i2041"]
+[ext_resource type="Shader" uid="uid://bq75i4llix6sx" path="res://glitch.gdshader" id="7_n8vhr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jka67"]
-atlas = ExtResource("3_r3fl7")
+atlas = ExtResource("4_5j5gb")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5arm"]
-atlas = ExtResource("3_r3fl7")
+atlas = ExtResource("4_5j5gb")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wc5p8"]
-atlas = ExtResource("3_r3fl7")
+atlas = ExtResource("4_5j5gb")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jsk3o"]
-atlas = ExtResource("3_r3fl7")
+atlas = ExtResource("4_5j5gb")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4arys"]
-atlas = ExtResource("4_i5arm")
+atlas = ExtResource("5_mx85b")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6iypd"]
-atlas = ExtResource("4_i5arm")
+atlas = ExtResource("5_mx85b")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tereu"]
-atlas = ExtResource("5_wc5p8")
+atlas = ExtResource("6_hx44q")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cdqbm"]
-atlas = ExtResource("5_wc5p8")
+atlas = ExtResource("6_hx44q")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_imku0"]
-atlas = ExtResource("5_wc5p8")
+atlas = ExtResource("6_hx44q")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wlxy5"]
-atlas = ExtResource("5_wc5p8")
+atlas = ExtResource("6_hx44q")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3v7ru"]
-atlas = ExtResource("5_wc5p8")
+atlas = ExtResource("6_hx44q")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tcnuu"]
-atlas = ExtResource("5_wc5p8")
+atlas = ExtResource("6_hx44q")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a0tk4"]
@@ -128,66 +128,62 @@ background_mode = 1
 background_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wc5p8"]
-shader = ExtResource("7_wc5p8")
+shader = ExtResource("7_n8vhr")
 shader_parameter/grain_amount = 0.05
 shader_parameter/grain_size = 1.0
 shader_parameter/flicker_intensity = 0.02
 shader_parameter/scratch_intensity = 0.1
 
 [node name="Node3D" type="Node3D" unique_id=628576255]
-script = ExtResource("1_noarx")
+script = ExtResource("1_i2041")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=309837897]
 operation = 1
 
 [node name="CSGPlayer" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1301314500]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 1.5, 0)
 size = Vector3(19.2, 10.8, 0.01)
 material = SubResource("StandardMaterial3D_i5arm")
 
 [node name="CSGGround" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1292904321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9657338, 0.4722457, -28.68863)
 operation = 1
-size = Vector3(20, 1, 20)
+size = Vector3(20, 1, 60)
 
 [node name="CSGWall" type="CSGBox3D" parent="CSGCombiner3D/CSGGround" unique_id=436096016]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.300501, 3.4102879, 4.468428)
-size = Vector3(1, 6, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5156143, 3.4102879, 0.25372314)
+size = Vector3(1, 6, 60)
 
 [node name="CSGStep1" type="CSGBox3D" parent="CSGCombiner3D/CSGGround" unique_id=294647594]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7441871, 2.366442, -5.7141485)
-size = Vector3(4, 1, 4)
+transform = Transform3D(0.49633783, 0, 0.8681295, 0, 1, 0, -0.8681295, 0, 0.49633783, -6.3509827, 3.1000965, -5.3762894)
+size = Vector3(1, 5, 7)
 
 [node name="CSGStep2" type="CSGBox3D" parent="CSGCombiner3D/CSGGround" unique_id=247702998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5592537, 4.4135504, -5.76122)
+visible = false
 size = Vector3(4, 1, 4)
 
 [node name="CSGStep3" type="CSGBox3D" parent="CSGCombiner3D/CSGGround" unique_id=1809805282]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5012584, 4.3474383, -2.5715995)
+visible = false
 size = Vector3(2, 1, 4)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGGround" unique_id=2070881152]
-transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 5.4482965, 5.969757, 2.311522)
-radius = 3.0
-height = 6.0
+[node name="CSGWall2" type="CSGBox3D" parent="CSGCombiner3D/CSGGround" unique_id=1443279505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.417093, 3.4102879, 0.25372314)
+size = Vector3(1, 6, 60)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGGround/CSGCylinder3D" unique_id=370546079]
-transform = Transform3D(1, 0, 0, 0, 0.9999992, 1.0658141e-14, 0, -1.0658141e-14, 0.9999992, -0.049853325, -0.22362542, 0.06391907)
-operation = 2
-radius = 2.0
-height = 6.0
-
-[node name="map" parent="." unique_id=1051142398 instance=ExtResource("6_i5arm")]
+[node name="level1" parent="." unique_id=1337777398 instance=ExtResource("7_i2041")]
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=609404391]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5080771, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.6049652, 3.1218653, -5.1052675)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 slide_on_ceiling = false
 wall_min_slide_angle = 3.1415927
 platform_on_leave = 2
-script = ExtResource("1_a202f")
+script = ExtResource("3_usj0q")
 
 [node name="PlayerSprite" type="AnimatedSprite3D" parent="Player" unique_id=676583410]
 unique_name_in_owner = true
@@ -222,7 +218,7 @@ target_position = Vector3(0, -0.5, 0)
 
 [node name="3DCamera" type="Camera3D" parent="Player" unique_id=1109545932]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.8212289, 0.5705989, 0, -0.5705989, 0.8212289, -0.118927, 6.3915186, 12.951379)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118925095, 1.549056, 10.55147)
 cull_mask = 2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=1051151805]
