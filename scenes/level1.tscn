@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://wboa77tbjiy0" path="res://scripts/deadzone.gd" id="6_i2041"]
 [ext_resource type="Script" uid="uid://drpe2mrrwb74e" path="res://scripts/interactable.gd" id="7_conm7"]
 [ext_resource type="Shader" uid="uid://bq75i4llix6sx" path="res://assets/shaders/glitch.gdshader" id="7_n8vhr"]
+[ext_resource type="Texture2D" uid="uid://6wddushy86hs" path="res://assets/sprites/bubble.png" id="8_u3awl"]
+[ext_resource type="Texture2D" uid="uid://bcyfj73k1ied6" path="res://assets/sprites/billboard.png" id="9_2ku1j"]
+[ext_resource type="FontFile" uid="uid://kmslcl1wq3a3" path="res://assets/fonts/VonwaonBitmap-16px.ttf" id="10_2ku1j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0, 0, 0, 1)
@@ -160,15 +163,18 @@ material = SubResource("StandardMaterial3D_jka67")
 size = Vector3(4.32, 0, 7.68)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_conm7"]
+size = Vector3(10.8, 1, 19.2)
 
 [sub_resource type="Environment" id="Environment_i5arm"]
 background_mode = 1
 background_color = Color(1, 1, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mtpvm"]
+size = Vector3(3, 5, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_v7umd"]
-font_size = 32
+font = ExtResource("10_2ku1j")
+font_size = 64
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_crycw"]
@@ -221,7 +227,8 @@ sprite_frames = SubResource("SpriteFrames_a0tk4")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="Collision" type="CollisionShape3D" parent="Player" unique_id=1156648663]
+[node name="PlayerCollision" type="CollisionShape3D" parent="Player" unique_id=1156648663]
+unique_name_in_owner = true
 transform = Transform3D(-0.99999994, -8.742277e-08, 3.821371e-15, 0, -4.3711385e-08, -1, 8.742277e-08, -0.99999994, 4.371139e-08, 0, 0.05, 0)
 shape = SubResource("BoxShape3D_r3fl7")
 
@@ -230,9 +237,11 @@ transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.3
 layers = 2
 mesh = SubResource("BoxMesh_noarx")
 
-[node name="Area3D" type="Area3D" parent="Player/Slicer" unique_id=1288483347]
+[node name="SlicerCollisionArea" type="Area3D" parent="Player/Slicer" unique_id=1288483347]
+unique_name_in_owner = true
 
-[node name="SlicerCollision" type="CollisionShape3D" parent="Player/Slicer/Area3D" unique_id=1831056093]
+[node name="SlicerCollision" type="CollisionShape3D" parent="Player/Slicer/SlicerCollisionArea" unique_id=1831056093]
+unique_name_in_owner = true
 shape = SubResource("BoxShape3D_conm7")
 
 [node name="2DCameraFront" type="Camera3D" parent="Player" unique_id=2061233053]
@@ -252,13 +261,15 @@ target_position = Vector3(0, -0.5, 0)
 [node name="level1" parent="." unique_id=1425837171 instance=ExtResource("2_i2041")]
 
 [node name="Interactable" type="Node3D" parent="level1" unique_id=33450346]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8111506, 4.5673914, -27.3903)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.978177, 4.5673914, -38.4659)
 script = ExtResource("7_conm7")
+sign_text = "[Z] 向 [5rex5aSE] 移动"
+icon_texture = ExtResource("9_2ku1j")
 
 [node name="Area3D" type="Area3D" parent="level1/Interactable" unique_id=1072160745]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level1/Interactable/Area3D" unique_id=589906780]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.9915061, -2.1187449, -7.558819)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.27540207, -2.1187449, 3.5605526)
 shape = SubResource("BoxShape3D_mtpvm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="level1/Interactable" unique_id=1602459389]
@@ -271,24 +282,163 @@ offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="level1/Interactable/CanvasLayer/Control" unique_id=387296338]
 layout_mode = 0
-offset_left = 763.0
-offset_top = 87.0
-offset_right = 1475.9788
-offset_bottom = 477.0
+offset_left = 775.0
+offset_top = 72.0
+offset_right = 1487.9788
+offset_bottom = 462.0
+texture = ExtResource("8_u3awl")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="level1/Interactable/CanvasLayer/Control" unique_id=690117321]
 layout_mode = 0
-offset_left = 896.0
-offset_top = 196.0
-offset_right = 1340.0
-offset_bottom = 341.0
+offset_left = 899.0
+offset_top = 180.0
+offset_right = 1343.0
+offset_bottom = 325.0
 text = "测试文字"
 label_settings = SubResource("LabelSettings_v7umd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite3D" type="Sprite3D" parent="level1/Interactable" unique_id=397048664]
+transform = Transform3D(-0.08520794, 0, -0.49268612, 0, 0.5, 0, 0.49268612, 0, -0.08520794, -4.3735275, -2.6386166, 2.2910404)
+layers = 3
+texture = ExtResource("9_2ku1j")
+
+[node name="Interactable2" type="Node3D" parent="level1" unique_id=93469710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.413149, 9.804544, -109.32541)
+script = ExtResource("7_conm7")
+sign_text = "[X] 向 [5rWF5bGC] 移动"
+icon_texture = ExtResource("9_2ku1j")
+
+[node name="Area3D" type="Area3D" parent="level1/Interactable2" unique_id=1505233109]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level1/Interactable2/Area3D" unique_id=1023643276]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.882957, -2.1187449, 3.5605545)
+shape = SubResource("BoxShape3D_mtpvm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="level1/Interactable2" unique_id=96472217]
+
+[node name="Control" type="Control" parent="level1/Interactable2/CanvasLayer" unique_id=2020426057]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="level1/Interactable2/CanvasLayer/Control" unique_id=1626649244]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 72.0
+offset_right = 1487.9788
+offset_bottom = 462.0
+texture = ExtResource("8_u3awl")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="level1/Interactable2/CanvasLayer/Control" unique_id=1495255425]
+layout_mode = 0
+offset_left = 899.0
+offset_top = 180.0
+offset_right = 1343.0
+offset_bottom = 325.0
+text = "测试文字"
+label_settings = SubResource("LabelSettings_v7umd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="level1/Interactable2" unique_id=1638830874]
+transform = Transform3D(-0.08520794, 0, -0.49268612, 0, 0.5, 0, 0.49268612, 0, -0.08520794, -4.3735275, -2.6386166, 2.2910404)
+layers = 3
+texture = ExtResource("9_2ku1j")
+
+[node name="Interactable3" type="Node3D" parent="level1" unique_id=893676920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7905188, 4.426091, -6.3092794)
+script = ExtResource("7_conm7")
+sign_text = "[⬅➡] 移动"
+icon_texture = ExtResource("9_2ku1j")
+
+[node name="Area3D" type="Area3D" parent="level1/Interactable3" unique_id=1287604129]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level1/Interactable3/Area3D" unique_id=291142087]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.882957, -2.1187449, 3.5605545)
+shape = SubResource("BoxShape3D_mtpvm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="level1/Interactable3" unique_id=705706178]
+
+[node name="Control" type="Control" parent="level1/Interactable3/CanvasLayer" unique_id=1630151347]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="level1/Interactable3/CanvasLayer/Control" unique_id=1437402907]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 72.0
+offset_right = 1487.9788
+offset_bottom = 462.0
+texture = ExtResource("8_u3awl")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="level1/Interactable3/CanvasLayer/Control" unique_id=187457392]
+layout_mode = 0
+offset_left = 899.0
+offset_top = 180.0
+offset_right = 1343.0
+offset_bottom = 325.0
+text = "测试文字"
+label_settings = SubResource("LabelSettings_v7umd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="level1/Interactable3" unique_id=136021185]
+transform = Transform3D(-0.08520794, 0, -0.49268612, 0, 0.5, 0, 0.49268612, 0, -0.08520794, -4.3735275, -2.6386166, 2.2910404)
+layers = 3
+texture = ExtResource("9_2ku1j")
+
+[node name="Interactable4" type="Node3D" parent="level1" unique_id=1415330973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6487932, 4.426091, -12.431472)
+script = ExtResource("7_conm7")
+sign_text = "[SPACE] 跳跃"
+icon_texture = ExtResource("9_2ku1j")
+
+[node name="Area3D" type="Area3D" parent="level1/Interactable4" unique_id=1743203425]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level1/Interactable4/Area3D" unique_id=472617541]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.882957, -2.1187449, 2.84447)
+shape = SubResource("BoxShape3D_mtpvm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="level1/Interactable4" unique_id=1213131026]
+
+[node name="Control" type="Control" parent="level1/Interactable4/CanvasLayer" unique_id=1849316503]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="level1/Interactable4/CanvasLayer/Control" unique_id=171075333]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 72.0
+offset_right = 1487.9788
+offset_bottom = 462.0
+texture = ExtResource("8_u3awl")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="level1/Interactable4/CanvasLayer/Control" unique_id=861703802]
+layout_mode = 0
+offset_left = 899.0
+offset_top = 180.0
+offset_right = 1343.0
+offset_bottom = 325.0
+text = "测试文字"
+label_settings = SubResource("LabelSettings_v7umd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="level1/Interactable4" unique_id=600220558]
+transform = Transform3D(-0.08520794, 0, -0.49268612, 0, 0.5, 0, 0.49268612, 0, -0.08520794, -4.3735275, -2.6386166, 2.2910404)
+layers = 3
+texture = ExtResource("9_2ku1j")
 
 [node name="Deadzone" type="Area3D" parent="." unique_id=537855657]
 script = ExtResource("6_i2041")
@@ -314,4 +464,20 @@ offset_left = 3.0
 offset_right = 1923.0
 offset_bottom = 1080.0
 
+[connection signal="area_entered" from="level1/Interactable/Area3D" to="level1/Interactable" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="level1/Interactable/Area3D" to="level1/Interactable" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="level1/Interactable/Area3D" to="level1/Interactable" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="level1/Interactable/Area3D" to="level1/Interactable" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="level1/Interactable2/Area3D" to="level1/Interactable2" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="level1/Interactable2/Area3D" to="level1/Interactable2" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="level1/Interactable2/Area3D" to="level1/Interactable2" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="level1/Interactable2/Area3D" to="level1/Interactable2" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="level1/Interactable3/Area3D" to="level1/Interactable3" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="level1/Interactable3/Area3D" to="level1/Interactable3" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="level1/Interactable3/Area3D" to="level1/Interactable3" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="level1/Interactable3/Area3D" to="level1/Interactable3" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="level1/Interactable4/Area3D" to="level1/Interactable4" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="level1/Interactable4/Area3D" to="level1/Interactable4" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="level1/Interactable4/Area3D" to="level1/Interactable4" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="level1/Interactable4/Area3D" to="level1/Interactable4" method="_on_area_3d_body_exited"]
 [connection signal="body_entered" from="Deadzone" to="Deadzone" method="_on_body_entered"]

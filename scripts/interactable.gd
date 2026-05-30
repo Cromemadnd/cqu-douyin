@@ -8,6 +8,7 @@ enum InteractType { LEVER, SIGNBOARD, KEY }
 @export var sign_text: String = "这是一块告示牌的内容"
 @export var textRect_texture: Texture2D # 文本框
 @export var icon_texture : Texture2D # 显示图标
+@onready var slider_collision = %SlicerCollision
 
 # 节点引用
 @onready var area = $Area3D
@@ -23,19 +24,12 @@ var is_looked_at: bool = false
 var interacted: bool = false
 
 func _ready():
-	# 连接Area3D的信号 (假设玩家节点在特定的碰撞层或名为"Player")
-	area.body_entered.connect(_on_body_entered)
-	area.body_exited.connect(_on_body_exited)
-	
 	# 初始化UI
 	ui_anchor.hide()
 	icon_sprite.hide()
 	text_rect.texture = textRect_texture
 	bubble_label.text = sign_text
-	icon_sprite.texture = icon_sprite
-
-func _process(_delta):
-	pass
+	icon_sprite.texture = icon_texture
 
 # 监听按键输入
 func _input(event):
@@ -50,19 +44,25 @@ func _input(event):
 			InteractType.KEY:
 				interacted = true
 
-# 信号回调
-func _on_body_entered(body):
-	if body.is_in_group("Player") & body.is("Collision"): # 确保玩家节点在"Player"组
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body == %Player:
 		is_player_near = true
 		ui_anchor.show()
-	if body.is_in_group("Player") & body.is("Slicer_collision"):
-		is_looked_at = true
-		icon_sprite.show()
+		print("player near")
 
-func _on_body_exited(body):
-	if body.is_in_group("Player") & body.is("Collision"):
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body == %Player:
 		is_player_near = false
 		ui_anchor.hide()
-	if body.is_in_group("Player") & body.is("Slicer_collision"):
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area == %SlicerCollisionArea:
+		is_looked_at = true
+		icon_sprite.show()
+		print("player look at")
+
+func _on_area_3d_area_exited(area: Area3D) -> void:
+	if area == %SlicerCollisionArea:
 		is_looked_at = false
 		icon_sprite.hide()
+		print("player NO look at")

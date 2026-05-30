@@ -2,7 +2,9 @@ extends Node
 
 # 预加载你的 BGM 资源（这里换成你自己的音频路径）
 #var bgm_gameover = preload("res://assets/bgm/level1.mp3")
+var bgm_title = preload("res://assets/bgm/title.mp3")
 var bgm_level_1 = preload("res://assets/bgm/level1.mp3")
+
 
 var audio_player: AudioStreamPlayer
 

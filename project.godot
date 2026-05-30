@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CQUDouyin"
-run/main_scene="uid://8rajqurshojr"
+run/main_scene="uid://blib4q8nn73ak"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
