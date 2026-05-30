@@ -1,6 +1,10 @@
 extends Node2D
 
+const FlashbackOverlay := preload("res://scripts/flashback_overlay.gd")
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+var starting_game: bool = false
 
 
 func _ready() -> void:
@@ -11,4 +15,7 @@ func _ready() -> void:
 
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/level1.tscn")
+	if starting_game:
+		return
+	starting_game = true
+	await FlashbackOverlay.play_intro(get_tree(), "res://scenes/level1.tscn")

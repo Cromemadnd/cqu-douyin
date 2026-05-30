@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://6wddushy86hs" path="res://assets/sprites/bubble.png" id="8_u3awl"]
 [ext_resource type="Texture2D" uid="uid://bcyfj73k1ied6" path="res://assets/sprites/billboard.png" id="9_2ku1j"]
 [ext_resource type="FontFile" uid="uid://kmslcl1wq3a3" path="res://assets/fonts/VonwaonBitmap-16px.ttf" id="10_2ku1j"]
+[ext_resource type="Texture2D" uid="uid://lv2qreq1o5mo" path="res://assets/door_opened.png" id="11_gnai3"]
+[ext_resource type="PackedScene" uid="uid://dqmj57mjs6pxc" path="res://scenes/depth_bar.tscn" id="12_f31uk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0, 0, 0, 1)
@@ -189,7 +191,7 @@ shader_parameter/grain_size = 45.0
 shader_parameter/flicker_intensity = 0.030000001425
 shader_parameter/scratch_intensity = 0.12
 
-[node name="Node3D" type="Node3D" unique_id=628576255]
+[node name="Node3D2" type="Node3D" unique_id=628576255]
 script = ExtResource("1_bbk5w")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=309837897]
@@ -208,7 +210,7 @@ mesh = SubResource("ArrayMesh_osuu3")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=609404391]
 unique_name_in_owner = true
-transform = Transform3D(0.00511384, 0, 0.9999869, 0, 1, 0, -0.9999869, 0, 0.00511384, 2.892416, 1.92312, 0)
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 2.892416, 1.92312, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -441,10 +443,13 @@ layers = 3
 texture = ExtResource("9_2ku1j")
 
 [node name="Interactable5" type="Node3D" parent="level1" unique_id=3907024]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6487932, 4.426091, -12.431472)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8351216, -13.534807, -139.72781)
 script = ExtResource("7_conm7")
-sign_text = "[SPACE] 跳跃"
-icon_texture = ExtResource("9_2ku1j")
+type = 3
+sign_text = "[E] 进入第二关"
+icon_texture = ExtResource("11_gnai3")
+target_scene = "res://scenes/level2.tscn"
+story_sequence = 1
 
 [node name="Area3D" type="Area3D" parent="level1/Interactable5" unique_id=594275020]
 
@@ -499,6 +504,11 @@ shape = SubResource("BoxShape3D_crycw")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Deadzone" unique_id=100592504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.181484, 0)
 shape = SubResource("WorldBoundaryShape3D_crycw")
+
+[node name="Depth_bar" parent="." unique_id=564960348 node_paths=PackedStringArray("player") instance=ExtResource("12_f31uk")]
+player = NodePath("../Player")
+uppboard = 12.8
+lowerboard = -2.89
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=649414428]
 

@@ -9,32 +9,35 @@
 font = ExtResource("4_gxi2d")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
+outline_size = 2
 
 [node name="Depth_bar" type="CanvasLayer" unique_id=564960348]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_g2rbc")
 
 [node name="Depth_bar" type="TextureRect" parent="." unique_id=2073643950]
-offset_left = 95.99999
-offset_top = 355.99997
-offset_right = 1896.0
-offset_bottom = 599.0
+offset_left = 92.99999
+offset_top = 67.50001
+offset_right = 1893.0
+offset_bottom = 310.50006
 rotation = 1.5707964
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_y3khx")
 
 [node name="Depth_dot" type="TextureRect" parent="." unique_id=1112038069]
-offset_left = 39.0
-offset_top = 655.0
-offset_right = 93.0
-offset_bottom = 711.0
+offset_left = 36.0
+offset_top = 366.5
+offset_right = 90.0
+offset_bottom = 422.5
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_hbjo7")
 
 [node name="Label" type="Label" parent="." unique_id=1568240984]
-offset_left = 22.0
-offset_top = 736.0
-offset_right = 133.0
-offset_bottom = 768.0
+offset_left = 19.0
+offset_top = 447.5
+offset_right = 130.0
+offset_bottom = 479.5
 text = "5米"
 label_settings = SubResource("LabelSettings_ilo1b")
 horizontal_alignment = 1

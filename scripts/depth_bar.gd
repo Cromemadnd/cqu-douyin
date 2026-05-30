@@ -1,9 +1,9 @@
-extends Node3D
+extends CanvasLayer
 
 @export_category("交互设置")
 @export var player = CharacterBody3D
-@export var uppboard = 0
-@export var lowerboard = -15
+@export var uppboard = 0.0
+@export var lowerboard = -15.0
 @export var enable : bool = true
 
 # 节点引用
@@ -11,17 +11,13 @@ extends Node3D
 @onready var depth_dot = $Depth_dot
 @onready var Text = $Label
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if enable:
-		var depth = player.position.x
-		depth_dot.position.y = 655 - ((655-348) * ((uppboard - depth) / (uppboard - lowerboard)))
-		Text.text = depth + "米"
+		var depth = -player.position.x
+		depth_dot.position.y = 72 + ((360 - 72) * ((depth - lowerboard) / (uppboard - lowerboard)))
+		Text.text = "%.2f 米" % depth
 	else:
 		depth_bar.hide()
 		depth_dot.hide()

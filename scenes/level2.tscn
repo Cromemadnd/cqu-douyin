@@ -1,10 +1,18 @@
 [gd_scene format=4 uid="uid://ctb5tnrm1ysk5"]
 
-[ext_resource type="Script" uid="uid://bkbpiteu4t11e" path="res://scenes/level_2.gd" id="1_6ep0u"]
-[ext_resource type="Script" uid="uid://dps1lbdpmwtfo" path="res://scripts/player_level1.gd" id="2_56gwk"]
+[ext_resource type="Script" uid="uid://bkbpiteu4t11e" path="res://scripts/level_2.gd" id="1_6ep0u"]
+[ext_resource type="Script" uid="uid://jptihrly0tjv" path="res://scripts/player_level2.gd" id="2_hrcei"]
 [ext_resource type="Texture2D" uid="uid://cw6uoyj5vvk7v" path="res://assets/sprites/player/player_idle_spritesheet.png" id="3_ve5ok"]
 [ext_resource type="Texture2D" uid="uid://djn5rb0eg7i2d" path="res://assets/sprites/player/player_jump_spritesheet.png" id="4_cleqw"]
 [ext_resource type="Texture2D" uid="uid://b5fcrdwyncyxv" path="res://assets/sprites/player/player_run_spritesheet.png" id="5_wvb8j"]
+[ext_resource type="Script" uid="uid://drpe2mrrwb74e" path="res://scripts/interactable.gd" id="6_8g4ke"]
+[ext_resource type="Texture2D" uid="uid://bcyfj73k1ied6" path="res://assets/sprites/billboard.png" id="7_56gwk"]
+[ext_resource type="Texture2D" uid="uid://dnmlo3hic872s" path="res://assets/door_closed.png" id="7_ve5ok"]
+[ext_resource type="PackedScene" uid="uid://dqmj57mjs6pxc" path="res://scenes/depth_bar.tscn" id="8_hrcei"]
+[ext_resource type="Texture2D" uid="uid://6wddushy86hs" path="res://assets/sprites/bubble.png" id="8_ve5ok"]
+[ext_resource type="FontFile" uid="uid://kmslcl1wq3a3" path="res://assets/fonts/VonwaonBitmap-16px.ttf" id="9_cleqw"]
+[ext_resource type="Texture2D" uid="uid://dmpa7cy64l53u" path="res://assets/key.png" id="10_1o0rt"]
+[ext_resource type="Texture2D" uid="uid://jc8m0ce8ie5w" path="res://assets/sprites/lever_off.png" id="11_2akij"]
 [ext_resource type="Script" uid="uid://wboa77tbjiy0" path="res://scripts/deadzone.gd" id="11_63e4f"]
 [ext_resource type="Shader" uid="uid://bq75i4llix6sx" path="res://assets/shaders/glitch.gdshader" id="12_y6lc1"]
 
@@ -305,6 +313,14 @@ data = PackedVector3Array(-11, -0.17806889, -11.288663, -6.536, -0.17806889, -10
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uabwe"]
 data = PackedVector3Array(-3.393557, 2.4239695, -0.10150146, -3.393557, 3.393557, -0.3045044, -3.393557, 3.393557, -0.10150146, -3.393557, 2.4239695, -0.10150146, -3.393557, 2.4239695, -0.3045044, -3.393557, 3.393557, -0.3045044, -3.393557, 2.4239695, -0.3045044, 3.393557, 3.393557, -0.3045044, -3.393557, 3.393557, -0.3045044, -3.393557, 2.4239695, -0.3045044, 3.393557, 2.4239695, -0.3045044, 3.393557, 3.393557, -0.3045044, 3.393557, 2.4239695, 0.10150146, 3.393557, 3.393557, 0.3045044, 3.393557, 3.393557, 0.10150146, 3.393557, 2.4239695, 0.10150146, 3.393557, 2.4239695, 0.3045044, 3.393557, 3.393557, 0.3045044, 3.393557, 2.4239695, 0.3045044, -3.393557, 3.393557, 0.3045044, 3.393557, 3.393557, 0.3045044, 3.393557, 2.4239695, 0.3045044, -3.393557, 2.4239695, 0.3045044, -3.393557, 3.393557, 0.3045044, -3.393557, -3.393557, 0.10150146, 3.393557, -3.393557, 0.3045044, 3.393557, -3.393557, 0.10150146, -3.393557, -3.393557, 0.10150146, -3.393557, -3.393557, 0.3045044, 3.393557, -3.393557, 0.3045044, 3.393557, 3.393557, 0.10150146, -3.393557, 3.393557, 0.3045044, -3.393557, 3.393557, 0.10150146, 3.393557, 3.393557, 0.10150146, 3.393557, 3.393557, 0.3045044, -3.393557, 3.393557, 0.3045044, 3.393557, 3.393557, -0.3045044, -3.393557, 3.393557, -0.10150146, -3.393557, 3.393557, -0.3045044, 3.393557, 3.393557, -0.3045044, 3.393557, 3.393557, -0.10150146, -3.393557, 3.393557, -0.10150146, 3.393557, 3.393557, -0.10150146, -3.393557, 3.393557, 0.10150146, -3.393557, 3.393557, -0.10150146, 3.393557, 3.393557, -0.10150146, 3.393557, 3.393557, 0.10150146, -3.393557, 3.393557, 0.10150146, -3.393557, -3.393557, -0.3045044, 3.393557, -3.393557, -0.10150146, 3.393557, -3.393557, -0.3045044, -3.393557, -3.393557, -0.3045044, -3.393557, -3.393557, -0.10150146, 3.393557, -3.393557, -0.10150146, -3.393557, -3.393557, -0.10150146, 3.393557, -3.393557, 0.10150146, 3.393557, -3.393557, -0.10150146, -3.393557, -3.393557, -0.10150146, -3.393557, -3.393557, 0.10150146, 3.393557, -3.393557, 0.10150146, 3.393557, 2.4239695, -0.3045044, 3.393557, 3.393557, -0.10150146, 3.393557, 3.393557, -0.3045044, 3.393557, 2.4239695, -0.3045044, 3.393557, 2.4239695, -0.10150146, 3.393557, 3.393557, -0.10150146, 3.393557, 2.4239695, -0.10150146, 3.393557, 3.393557, 0.10150146, 3.393557, 3.393557, -0.10150146, 3.393557, 2.4239695, -0.10150146, 3.393557, 2.4239695, 0.10150146, 3.393557, 3.393557, 0.10150146, -3.393557, 2.4239695, 0.3045044, -3.393557, 3.393557, 0.10150146, -3.393557, 3.393557, 0.3045044, -3.393557, 2.4239695, 0.3045044, -3.393557, 2.4239695, 0.10150146, -3.393557, 3.393557, 0.10150146, -3.393557, 2.4239695, 0.10150146, -3.393557, 3.393557, -0.10150146, -3.393557, 3.393557, 0.10150146, -3.393557, 2.4239695, 0.10150146, -3.393557, 2.4239695, -0.10150146, -3.393557, 3.393557, -0.10150146, -3.393557, -3.393557, 0.10150146, -3.393557, -2.4239695, -0.10150146, -3.393557, -2.4239695, 0.10150146, -3.393557, -3.393557, 0.10150146, -3.393557, -3.393557, -0.10150146, -3.393557, -2.4239695, -0.10150146, -3.393557, 2.4239695, 0.10150146, 3.393557, 2.4239695, -0.10150146, -3.393557, 2.4239695, -0.10150146, -3.393557, 2.4239695, 0.10150146, 3.393557, 2.4239695, 0.10150146, 3.393557, 2.4239695, -0.10150146, -3.393557, -1.4543816, 0.10150146, -3.393557, -0.48479378, -0.10150146, -3.393557, -0.48479378, 0.10150146, -3.393557, -1.4543816, 0.10150146, -3.393557, -1.4543816, -0.10150146, -3.393557, -0.48479378, -0.10150146, -3.393557, 1.4543816, 0.10150146, 3.393557, 2.4239695, 0.10150146, -3.393557, 2.4239695, 0.10150146, -3.393557, 1.4543816, 0.10150146, 3.393557, 1.4543816, 0.10150146, 3.393557, 2.4239695, 0.10150146, -3.393557, 0.4847939, 0.10150146, -3.393557, 1.4543816, -0.10150146, -3.393557, 1.4543816, 0.10150146, -3.393557, 0.4847939, 0.10150146, -3.393557, 0.4847939, -0.10150146, -3.393557, 1.4543816, -0.10150146, -3.393557, 1.4543816, -0.10150146, 3.393557, 1.4543816, 0.10150146, -3.393557, 1.4543816, 0.10150146, -3.393557, 1.4543816, -0.10150146, 3.393557, 1.4543816, -0.10150146, 3.393557, 1.4543816, 0.10150146, -3.393557, -3.393557, 0.3045044, -3.393557, -2.4239695, 0.10150146, -3.393557, -2.4239695, 0.3045044, -3.393557, -3.393557, 0.3045044, -3.393557, -3.393557, 0.10150146, -3.393557, -2.4239695, 0.10150146, -3.393557, -2.4239695, 0.3045044, -3.393557, -1.4543816, 0.10150146, -3.393557, -1.4543816, 0.3045044, -3.393557, -2.4239695, 0.3045044, -3.393557, -2.4239695, 0.10150146, -3.393557, -1.4543816, 0.10150146, -3.393557, -1.4543816, 0.3045044, -3.393557, -0.48479378, 0.10150146, -3.393557, -0.48479378, 0.3045044, -3.393557, -1.4543816, 0.3045044, -3.393557, -1.4543816, 0.10150146, -3.393557, -0.48479378, 0.10150146, -3.393557, -0.48479378, 0.3045044, -3.393557, 0.4847939, 0.10150146, -3.393557, 0.4847939, 0.3045044, -3.393557, -0.48479378, 0.3045044, -3.393557, -0.48479378, 0.10150146, -3.393557, 0.4847939, 0.10150146, -3.393557, 0.4847939, 0.3045044, -3.393557, 1.4543816, 0.10150146, -3.393557, 1.4543816, 0.3045044, -3.393557, 0.4847939, 0.3045044, -3.393557, 0.4847939, 0.10150146, -3.393557, 1.4543816, 0.10150146, -3.393557, 1.4543816, 0.3045044, -3.393557, 2.4239695, 0.10150146, -3.393557, 2.4239695, 0.3045044, -3.393557, 1.4543816, 0.3045044, -3.393557, 1.4543816, 0.10150146, -3.393557, 2.4239695, 0.10150146, 3.393557, -3.393557, -0.10150146, 3.393557, -2.4239695, 0.10150146, 3.393557, -2.4239695, -0.10150146, 3.393557, -3.393557, -0.10150146, 3.393557, -3.393557, 0.10150146, 3.393557, -2.4239695, 0.10150146, 3.393557, -1.4543816, -0.10150146, 3.393557, -0.48479378, 0.10150146, 3.393557, -0.48479378, -0.10150146, 3.393557, -1.4543816, -0.10150146, 3.393557, -1.4543816, 0.10150146, 3.393557, -0.48479378, 0.10150146, 3.393557, 0.4847939, -0.10150146, 3.393557, 1.4543816, 0.10150146, 3.393557, 1.4543816, -0.10150146, 3.393557, 0.4847939, -0.10150146, 3.393557, 0.4847939, 0.10150146, 3.393557, 1.4543816, 0.10150146, 3.393557, -3.393557, -0.3045044, 3.393557, -2.4239695, -0.10150146, 3.393557, -2.4239695, -0.3045044, 3.393557, -3.393557, -0.3045044, 3.393557, -3.393557, -0.10150146, 3.393557, -2.4239695, -0.10150146, 3.393557, -2.4239695, -0.3045044, 3.393557, -1.4543816, -0.10150146, 3.393557, -1.4543816, -0.3045044, 3.393557, -2.4239695, -0.3045044, 3.393557, -2.4239695, -0.10150146, 3.393557, -1.4543816, -0.10150146, 3.393557, -1.4543816, -0.3045044, 3.393557, -0.48479378, -0.10150146, 3.393557, -0.48479378, -0.3045044, 3.393557, -1.4543816, -0.3045044, 3.393557, -1.4543816, -0.10150146, 3.393557, -0.48479378, -0.10150146, 3.393557, -0.48479378, -0.3045044, 3.393557, 0.4847939, -0.10150146, 3.393557, 0.4847939, -0.3045044, 3.393557, -0.48479378, -0.3045044, 3.393557, -0.48479378, -0.10150146, 3.393557, 0.4847939, -0.10150146, 3.393557, 0.4847939, -0.3045044, 3.393557, 1.4543816, -0.10150146, 3.393557, 1.4543816, -0.3045044, 3.393557, 0.4847939, -0.3045044, 3.393557, 0.4847939, -0.10150146, 3.393557, 1.4543816, -0.10150146, 3.393557, 1.4543816, -0.3045044, 3.393557, 2.4239695, -0.10150146, 3.393557, 2.4239695, -0.3045044, 3.393557, 1.4543816, -0.3045044, 3.393557, 1.4543816, -0.10150146, 3.393557, 2.4239695, -0.10150146, 3.393557, -3.393557, 0.3045044, -3.393557, -2.4239695, 0.3045044, 3.393557, -2.4239695, 0.3045044, 3.393557, -3.393557, 0.3045044, -3.393557, -3.393557, 0.3045044, -3.393557, -2.4239695, 0.3045044, 3.393557, -2.4239695, 0.3045044, -3.393557, -1.4543816, 0.3045044, 3.393557, -1.4543816, 0.3045044, 3.393557, -2.4239695, 0.3045044, -3.393557, -2.4239695, 0.3045044, -3.393557, -1.4543816, 0.3045044, 3.393557, -1.4543816, 0.3045044, -3.393557, -0.48479378, 0.3045044, 3.393557, -0.48479378, 0.3045044, 3.393557, -1.4543816, 0.3045044, -3.393557, -1.4543816, 0.3045044, -3.393557, -0.48479378, 0.3045044, 3.393557, -0.48479378, 0.3045044, -3.393557, 0.4847939, 0.3045044, 3.393557, 0.4847939, 0.3045044, 3.393557, -0.48479378, 0.3045044, -3.393557, -0.48479378, 0.3045044, -3.393557, 0.4847939, 0.3045044, 3.393557, 0.4847939, 0.3045044, -3.393557, 1.4543816, 0.3045044, 3.393557, 1.4543816, 0.3045044, 3.393557, 0.4847939, 0.3045044, -3.393557, 0.4847939, 0.3045044, -3.393557, 1.4543816, 0.3045044, 3.393557, 1.4543816, 0.3045044, -3.393557, 2.4239695, 0.3045044, 3.393557, 2.4239695, 0.3045044, 3.393557, 1.4543816, 0.3045044, -3.393557, 1.4543816, 0.3045044, -3.393557, 2.4239695, 0.3045044, 3.393557, -3.393557, 0.10150146, 3.393557, -2.4239695, 0.3045044, 3.393557, -2.4239695, 0.10150146, 3.393557, -3.393557, 0.10150146, 3.393557, -3.393557, 0.3045044, 3.393557, -2.4239695, 0.3045044, 3.393557, -2.4239695, 0.10150146, 3.393557, -1.4543816, 0.3045044, 3.393557, -1.4543816, 0.10150146, 3.393557, -2.4239695, 0.10150146, 3.393557, -2.4239695, 0.3045044, 3.393557, -1.4543816, 0.3045044, 3.393557, -1.4543816, 0.10150146, 3.393557, -0.48479378, 0.3045044, 3.393557, -0.48479378, 0.10150146, 3.393557, -1.4543816, 0.10150146, 3.393557, -1.4543816, 0.3045044, 3.393557, -0.48479378, 0.3045044, 3.393557, -0.48479378, 0.10150146, 3.393557, 0.4847939, 0.3045044, 3.393557, 0.4847939, 0.10150146, 3.393557, -0.48479378, 0.10150146, 3.393557, -0.48479378, 0.3045044, 3.393557, 0.4847939, 0.3045044, 3.393557, 0.4847939, 0.10150146, 3.393557, 1.4543816, 0.3045044, 3.393557, 1.4543816, 0.10150146, 3.393557, 0.4847939, 0.10150146, 3.393557, 0.4847939, 0.3045044, 3.393557, 1.4543816, 0.3045044, 3.393557, 1.4543816, 0.10150146, 3.393557, 2.4239695, 0.3045044, 3.393557, 2.4239695, 0.10150146, 3.393557, 1.4543816, 0.10150146, 3.393557, 1.4543816, 0.3045044, 3.393557, 2.4239695, 0.3045044, -3.393557, -3.393557, -0.3045044, 3.393557, -2.4239695, -0.3045044, -3.393557, -2.4239695, -0.3045044, -3.393557, -3.393557, -0.3045044, 3.393557, -3.393557, -0.3045044, 3.393557, -2.4239695, -0.3045044, -3.393557, -2.4239695, -0.3045044, 3.393557, -1.4543816, -0.3045044, -3.393557, -1.4543816, -0.3045044, -3.393557, -2.4239695, -0.3045044, 3.393557, -2.4239695, -0.3045044, 3.393557, -1.4543816, -0.3045044, -3.393557, -1.4543816, -0.3045044, 3.393557, -0.48479378, -0.3045044, -3.393557, -0.48479378, -0.3045044, -3.393557, -1.4543816, -0.3045044, 3.393557, -1.4543816, -0.3045044, 3.393557, -0.48479378, -0.3045044, -3.393557, -0.48479378, -0.3045044, 3.393557, 0.4847939, -0.3045044, -3.393557, 0.4847939, -0.3045044, -3.393557, -0.48479378, -0.3045044, 3.393557, -0.48479378, -0.3045044, 3.393557, 0.4847939, -0.3045044, -3.393557, 0.4847939, -0.3045044, 3.393557, 1.4543816, -0.3045044, -3.393557, 1.4543816, -0.3045044, -3.393557, 0.4847939, -0.3045044, 3.393557, 0.4847939, -0.3045044, 3.393557, 1.4543816, -0.3045044, -3.393557, 1.4543816, -0.3045044, 3.393557, 2.4239695, -0.3045044, -3.393557, 2.4239695, -0.3045044, -3.393557, 1.4543816, -0.3045044, 3.393557, 1.4543816, -0.3045044, 3.393557, 2.4239695, -0.3045044, -3.393557, -3.393557, -0.10150146, -3.393557, -2.4239695, -0.3045044, -3.393557, -2.4239695, -0.10150146, -3.393557, -3.393557, -0.10150146, -3.393557, -3.393557, -0.3045044, -3.393557, -2.4239695, -0.3045044, -3.393557, -2.4239695, -0.10150146, -3.393557, -1.4543816, -0.3045044, -3.393557, -1.4543816, -0.10150146, -3.393557, -2.4239695, -0.10150146, -3.393557, -2.4239695, -0.3045044, -3.393557, -1.4543816, -0.3045044, -3.393557, -1.4543816, -0.10150146, -3.393557, -0.48479378, -0.3045044, -3.393557, -0.48479378, -0.10150146, -3.393557, -1.4543816, -0.10150146, -3.393557, -1.4543816, -0.3045044, -3.393557, -0.48479378, -0.3045044, -3.393557, -0.48479378, -0.10150146, -3.393557, 0.4847939, -0.3045044, -3.393557, 0.4847939, -0.10150146, -3.393557, -0.48479378, -0.10150146, -3.393557, -0.48479378, -0.3045044, -3.393557, 0.4847939, -0.3045044, -3.393557, 0.4847939, -0.10150146, -3.393557, 1.4543816, -0.3045044, -3.393557, 1.4543816, -0.10150146, -3.393557, 0.4847939, -0.10150146, -3.393557, 0.4847939, -0.3045044, -3.393557, 1.4543816, -0.3045044, -3.393557, 1.4543816, -0.10150146, -3.393557, 2.4239695, -0.3045044, -3.393557, 2.4239695, -0.10150146, -3.393557, 1.4543816, -0.10150146, -3.393557, 1.4543816, -0.3045044, -3.393557, 2.4239695, -0.3045044, -3.393557, 2.4239695, -0.10150146, 3.393557, 1.4543816, -0.10150146, -3.393557, 1.4543816, -0.10150146, -3.393557, 2.4239695, -0.10150146, 3.393557, 2.4239695, -0.10150146, 3.393557, 1.4543816, -0.10150146, -3.393557, -0.48479378, -0.10150146, 3.393557, -0.48479378, 0.10150146, -3.393557, -0.48479378, 0.10150146, -3.393557, -0.48479378, -0.10150146, 3.393557, -0.48479378, -0.10150146, 3.393557, -0.48479378, 0.10150146, -3.393557, -0.48479378, 0.10150146, 3.393557, 0.4847939, 0.10150146, -3.393557, 0.4847939, 0.10150146, -3.393557, -0.48479378, 0.10150146, 3.393557, -0.48479378, 0.10150146, 3.393557, 0.4847939, 0.10150146, -3.393557, 0.4847939, 0.10150146, 3.393557, 0.4847939, -0.10150146, -3.393557, 0.4847939, -0.10150146, -3.393557, 0.4847939, 0.10150146, 3.393557, 0.4847939, 0.10150146, 3.393557, 0.4847939, -0.10150146, -3.393557, 0.4847939, -0.10150146, 3.393557, -0.48479378, -0.10150146, -3.393557, -0.48479378, -0.10150146, -3.393557, 0.4847939, -0.10150146, 3.393557, 0.4847939, -0.10150146, 3.393557, -0.48479378, -0.10150146, -3.393557, -2.4239695, -0.10150146, 3.393557, -2.4239695, 0.10150146, -3.393557, -2.4239695, 0.10150146, -3.393557, -2.4239695, -0.10150146, 3.393557, -2.4239695, -0.10150146, 3.393557, -2.4239695, 0.10150146, -3.393557, -2.4239695, 0.10150146, 3.393557, -1.4543816, 0.10150146, -3.393557, -1.4543816, 0.10150146, -3.393557, -2.4239695, 0.10150146, 3.393557, -2.4239695, 0.10150146, 3.393557, -1.4543816, 0.10150146, -3.393557, -1.4543816, 0.10150146, 3.393557, -1.4543816, -0.10150146, -3.393557, -1.4543816, -0.10150146, -3.393557, -1.4543816, 0.10150146, 3.393557, -1.4543816, 0.10150146, 3.393557, -1.4543816, -0.10150146, -3.393557, -1.4543816, -0.10150146, 3.393557, -2.4239695, -0.10150146, -3.393557, -2.4239695, -0.10150146, -3.393557, -1.4543816, -0.10150146, 3.393557, -1.4543816, -0.10150146, 3.393557, -2.4239695, -0.10150146)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wvb8j"]
+size = Vector3(3, 5, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g8vcy"]
+font = ExtResource("9_cleqw")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_crycw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wc5p8"]
@@ -343,15 +359,15 @@ mesh = SubResource("ArrayMesh_l4wrf")
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=609404391]
 unique_name_in_owner = true
-transform = Transform3D(0.00511384, 0, 0.9999869, 0, 1, 0, -0.9999869, 0, 0.00511384, 5.512001, 0.6311908, 4.101)
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 5.512001, -2.595167, 4.0804453)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 slide_on_ceiling = false
 wall_min_slide_angle = 3.1415927
 platform_on_leave = 2
-script = ExtResource("2_56gwk")
-jump_force = 10.0
+script = ExtResource("2_hrcei")
+jump_force = 9.0
 gravity = 12.0
 
 [node name="PlayerSprite" type="AnimatedSprite3D" parent="Player" unique_id=676583410]
@@ -414,36 +430,38 @@ mesh = SubResource("ArrayMesh_7qq1j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level2/零部件1/StaticBody3D" unique_id=457138962]
 shape = SubResource("ConcavePolygonShape3D_6c14p")
 
-[node name="零部件2" type="MeshInstance3D" parent="level2" unique_id=1913762522]
+[node name="LevelLayer1" type="MeshInstance3D" parent="level2" unique_id=1913762522]
+unique_name_in_owner = true
 layers = 2
 mesh = SubResource("ArrayMesh_xfsyn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="level2/零部件2" unique_id=1924209798]
+[node name="StaticBody3D" type="StaticBody3D" parent="level2/LevelLayer1" unique_id=1924209798]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level2/零部件2/StaticBody3D" unique_id=489907736]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level2/LevelLayer1/StaticBody3D" unique_id=489907736]
 shape = SubResource("ConcavePolygonShape3D_8cvpk")
 
-[node name="零部件3" type="MeshInstance3D" parent="level2" unique_id=1691317592]
+[node name="LevelLayer2" type="MeshInstance3D" parent="level2" unique_id=1691317592]
+unique_name_in_owner = true
 layers = 2
 mesh = SubResource("ArrayMesh_4p043")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="level2/零部件3" unique_id=786181482]
+[node name="StaticBody3D" type="StaticBody3D" parent="level2/LevelLayer2" unique_id=786181482]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level2/零部件3/StaticBody3D" unique_id=1487320816]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level2/LevelLayer2/StaticBody3D" unique_id=1487320816]
 shape = SubResource("ConcavePolygonShape3D_gk20o")
 
-[node name="零部件4" type="MeshInstance3D" parent="level2" unique_id=311132537]
+[node name="LevelLayer3" type="MeshInstance3D" parent="level2" unique_id=311132537]
+unique_name_in_owner = true
 layers = 2
 mesh = SubResource("ArrayMesh_mvk0b")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="level2/零部件4" unique_id=190925527]
+[node name="StaticBody3D" type="StaticBody3D" parent="level2/LevelLayer3" unique_id=190925527]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level2/零部件4/StaticBody3D" unique_id=847887262]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level2/LevelLayer3/StaticBody3D" unique_id=847887262]
 shape = SubResource("ConcavePolygonShape3D_bokty")
 
 [node name="门-col" type="MeshInstance3D" parent="level2" unique_id=312180233]
 transform = Transform3D(0.7709306, 0, 0, 0, 0.69918454, 0, 0, 0, 1.0022976, -2.4474974, 11.100048, 7.550185)
-visible = false
 layers = 2
 mesh = SubResource("ArrayMesh_l4wrf")
 
@@ -452,12 +470,202 @@ mesh = SubResource("ArrayMesh_l4wrf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level2/门-col/StaticBody3D" unique_id=1305072849]
 shape = SubResource("ConcavePolygonShape3D_uabwe")
 
+[node name="EndingInteractable" type="Node3D" parent="level2" unique_id=1529300227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2384095, -2.8432236, -7.7084823)
+script = ExtResource("6_8g4ke")
+type = 3
+sign_text = "需要认知锚点"
+icon_texture = ExtResource("7_ve5ok")
+story_sequence = 2
+starts_locked = true
+
+[node name="Area3D" type="Area3D" parent="level2/EndingInteractable" unique_id=1465708043]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level2/EndingInteractable/Area3D" unique_id=1115445139]
+transform = Transform3D(1.6, 0, 0, 0, 1.8, 0, 0, 0, 1.6, 0, 0, 0)
+shape = SubResource("BoxShape3D_wvb8j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="level2/EndingInteractable" unique_id=639377668]
+
+[node name="Control" type="Control" parent="level2/EndingInteractable/CanvasLayer" unique_id=193878318]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="level2/EndingInteractable/CanvasLayer/Control" unique_id=1056926396]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 72.0
+offset_right = 1487.9788
+offset_bottom = 462.0
+texture = ExtResource("8_ve5ok")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="level2/EndingInteractable/CanvasLayer/Control" unique_id=223569183]
+layout_mode = 0
+offset_left = 899.0
+offset_top = 180.0
+offset_right = 1343.0
+offset_bottom = 325.0
+text = "测试文字"
+label_settings = SubResource("LabelSettings_g8vcy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="level2/EndingInteractable" unique_id=1977895605]
+transform = Transform3D(-0.08520794, 0, -0.49268612, 0, 0.5, 0, 0.49268612, 0, -0.08520794, 0, 0, 0)
+layers = 3
+texture = ExtResource("7_ve5ok")
+
+[node name="Interactable" type="Node3D" parent="level2" unique_id=157701857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5423937, -0.6650219, -1.7846954)
+script = ExtResource("6_8g4ke")
+sign_text = "[TAB] 查看 3D 视图"
+icon_texture = ExtResource("7_56gwk")
+
+[node name="Area3D" type="Area3D" parent="level2/Interactable" unique_id=42158744]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level2/Interactable/Area3D" unique_id=1348105050]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.27540207, -2.1187449, 3.5605526)
+shape = SubResource("BoxShape3D_wvb8j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="level2/Interactable" unique_id=139098603]
+
+[node name="Control" type="Control" parent="level2/Interactable/CanvasLayer" unique_id=908426630]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="level2/Interactable/CanvasLayer/Control" unique_id=1176063898]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 72.0
+offset_right = 1487.9788
+offset_bottom = 462.0
+texture = ExtResource("8_ve5ok")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="level2/Interactable/CanvasLayer/Control" unique_id=2008520843]
+layout_mode = 0
+offset_left = 899.0
+offset_top = 180.0
+offset_right = 1343.0
+offset_bottom = 325.0
+text = "测试文字"
+label_settings = SubResource("LabelSettings_g8vcy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="level2/Interactable" unique_id=878851412]
+transform = Transform3D(-0.08520794, 0, -0.49268612, 0, 0.5, 0, 0.49268612, 0, -0.08520794, -4.3735275, -2.6386166, 2.2910404)
+layers = 3
+texture = ExtResource("7_56gwk")
+
+[node name="LeverInteractable" type="Node3D" parent="level2" unique_id=260272471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8170052, -12.682689, 3.6253223)
+script = ExtResource("6_8g4ke")
+type = 0
+sign_text = "[E] 打开通路"
+icon_texture = ExtResource("11_2akij")
+
+[node name="Area3D" type="Area3D" parent="level2/LeverInteractable" unique_id=989891099]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level2/LeverInteractable/Area3D" unique_id=856129895]
+transform = Transform3D(1.6, 0, 0, 0, 1.8, 0, 0, 0, 1.6, 0, 0, 0)
+shape = SubResource("BoxShape3D_wvb8j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="level2/LeverInteractable" unique_id=253828680]
+
+[node name="Control" type="Control" parent="level2/LeverInteractable/CanvasLayer" unique_id=1224655101]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="level2/LeverInteractable/CanvasLayer/Control" unique_id=453922814]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 72.0
+offset_right = 1487.9788
+offset_bottom = 462.0
+texture = ExtResource("8_ve5ok")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="level2/LeverInteractable/CanvasLayer/Control" unique_id=1484387684]
+layout_mode = 0
+offset_left = 899.0
+offset_top = 180.0
+offset_right = 1343.0
+offset_bottom = 325.0
+text = "测试文字"
+label_settings = SubResource("LabelSettings_g8vcy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="level2/LeverInteractable" unique_id=365225459]
+transform = Transform3D(-0.08520794, 0, -0.49268612, 0, 0.5, 0, 0.49268612, 0, -0.08520794, 0, 0, 0)
+layers = 3
+texture = ExtResource("11_2akij")
+
+[node name="KeyInteractable" type="Node3D" parent="level2" unique_id=1543075839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3139715, 10.287845, 11.35751)
+script = ExtResource("6_8g4ke")
+type = 2
+sign_text = "核心认知锚点"
+icon_texture = ExtResource("10_1o0rt")
+
+[node name="Area3D" type="Area3D" parent="level2/KeyInteractable" unique_id=543631705]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level2/KeyInteractable/Area3D" unique_id=1253340799]
+transform = Transform3D(1.4, 0, 0, 0, 1.6, 0, 0, 0, 1.4, 0, 0, 0)
+shape = SubResource("BoxShape3D_wvb8j")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="level2/KeyInteractable" unique_id=1233083979]
+
+[node name="Control" type="Control" parent="level2/KeyInteractable/CanvasLayer" unique_id=560213368]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="level2/KeyInteractable/CanvasLayer/Control" unique_id=255073928]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 72.0
+offset_right = 1487.9788
+offset_bottom = 462.0
+texture = ExtResource("8_ve5ok")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="level2/KeyInteractable/CanvasLayer/Control" unique_id=194441563]
+layout_mode = 0
+offset_left = 899.0
+offset_top = 180.0
+offset_right = 1343.0
+offset_bottom = 325.0
+text = "测试文字"
+label_settings = SubResource("LabelSettings_g8vcy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="level2/KeyInteractable" unique_id=2037316807]
+transform = Transform3D(-0.08520794, 0, -0.49268612, 0, 0.5, 0, 0.49268612, 0, -0.08520794, 0, 0, 0)
+layers = 3
+texture = ExtResource("10_1o0rt")
+
 [node name="Deadzone" type="Area3D" parent="." unique_id=537855657]
 script = ExtResource("11_63e4f")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Deadzone" unique_id=100592504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -37.181484, 0)
 shape = SubResource("WorldBoundaryShape3D_crycw")
+
+[node name="Depth_bar" parent="." unique_id=564960348 node_paths=PackedStringArray("player") instance=ExtResource("8_hrcei")]
+player = NodePath("../Player")
+uppboard = 12.0
+lowerboard = -12.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=649414428]
 
@@ -468,4 +676,20 @@ offset_left = 3.0
 offset_right = 1923.0
 offset_bottom = 1080.0
 
+[connection signal="area_entered" from="level2/EndingInteractable/Area3D" to="level2/EndingInteractable" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="level2/EndingInteractable/Area3D" to="level2/EndingInteractable" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="level2/EndingInteractable/Area3D" to="level2/EndingInteractable" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="level2/EndingInteractable/Area3D" to="level2/EndingInteractable" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="level2/Interactable/Area3D" to="level2/Interactable" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="level2/Interactable/Area3D" to="level2/Interactable" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="level2/Interactable/Area3D" to="level2/Interactable" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="level2/Interactable/Area3D" to="level2/Interactable" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="level2/LeverInteractable/Area3D" to="level2/LeverInteractable" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="level2/LeverInteractable/Area3D" to="level2/LeverInteractable" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="level2/LeverInteractable/Area3D" to="level2/LeverInteractable" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="level2/LeverInteractable/Area3D" to="level2/LeverInteractable" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="level2/KeyInteractable/Area3D" to="level2/KeyInteractable" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="level2/KeyInteractable/Area3D" to="level2/KeyInteractable" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="level2/KeyInteractable/Area3D" to="level2/KeyInteractable" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="level2/KeyInteractable/Area3D" to="level2/KeyInteractable" method="_on_area_3d_body_exited"]
 [connection signal="body_entered" from="Deadzone" to="Deadzone" method="_on_body_entered"]
