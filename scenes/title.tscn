@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://blib4q8nn73ak"]
+
+[ext_resource type="Texture2D" uid="uid://du7ftydr5hai3" path="res://assets/sprites/title/title_p2.png" id="1_pyl7j"]
+[ext_resource type="Texture2D" uid="uid://8ap4uisku6nu" path="res://assets/sprites/title/title_p3.png" id="2_b3w7a"]
+[ext_resource type="Texture2D" uid="uid://b0yf3n45po0lu" path="res://assets/sprites/title/title_p4.png" id="3_4rr2b"]
+[ext_resource type="Texture2D" uid="uid://c28jx52lbcxr0" path="res://assets/sprites/title/title_p1.png" id="4_yql1r"]
+
+[sub_resource type="Animation" id="Animation_pyl7j"]
+resource_name = "title"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b3w7a"]
+_data = {
+&"title": SubResource("Animation_pyl7j")
+}
+
+[node name="Node2D" type="Node2D" unique_id=549455113]
+
+[node name="TitleP2" type="Sprite2D" parent="." unique_id=1497182842]
+position = Vector2(744, 477)
+texture = ExtResource("1_pyl7j")
+
+[node name="TitleP3" type="Sprite2D" parent="." unique_id=1134260449]
+position = Vector2(1036, 504)
+texture = ExtResource("2_b3w7a")
+
+[node name="TitleP4" type="Sprite2D" parent="." unique_id=946600473]
+position = Vector2(1520, 470)
+texture = ExtResource("3_4rr2b")
+
+[node name="TitleP1" type="Sprite2D" parent="." unique_id=1986833844]
+position = Vector2(377, 500)
+texture = ExtResource("4_yql1r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=926410139]
+libraries/ = SubResource("AnimationLibrary_b3w7a")

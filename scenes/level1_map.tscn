@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgkok5pqvceas"]
 
-[ext_resource type="PackedScene" uid="uid://dktb8xjd4u6ce" path="res://level1.blend" id="1_y42cj"]
+[ext_resource type="PackedScene" uid="uid://dktb8xjd4u6ce" path="res://assets/blend/level1.blend" id="1_y42cj"]
 
 [node name="level1" unique_id=1425837171 instance=ExtResource("1_y42cj")]
 

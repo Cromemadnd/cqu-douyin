@@ -3,7 +3,7 @@ shader_type canvas_item;
 uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
 
 // --- 控制参数 ---
-uniform float grain_amount : hint_range(0.0, 0.3) = 0.15;       // 噪点强度（微小噪点需要稍微调高一点才明显）
+uniform float grain_amount : hint_range(0.0, 0.3) = 0.5;       // 噪点强度（微小噪点需要稍微调高一点才明显）
 uniform float grain_size : hint_range(1.0, 100.0) = 45.0;       // 【关键】默认值调大，颗粒会变得非常细腻
 uniform float flicker_intensity : hint_range(0.0, 0.2) = 0.03;   
 uniform float scratch_intensity : hint_range(0.0, 0.5) = 0.12;   

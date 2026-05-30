@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bpf8tobgmedru"
-path="res://.godot/imported/map.blend-ee66f80f65237a88ff7150353a7c7393.scn"
+path="res://.godot/imported/map_demo.blend-3574ceddadbdfb5a241ed5dd0f1ac0fc.scn"
 
 [deps]
 
-source_file="res://map.blend"
-dest_files=["res://.godot/imported/map.blend-ee66f80f65237a88ff7150353a7c7393.scn"]
+source_file="res://assets/blend/map_demo.blend"
+dest_files=["res://.godot/imported/map_demo.blend-3574ceddadbdfb5a241ed5dd0f1ac0fc.scn"]
 
 [params]
 
