@@ -153,7 +153,7 @@ animations = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
-size = Vector3(0.6, 0, 1.2)
+size = Vector3(0.6, 0.01, 1.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
 albedo_color = Color(0, 0, 0, 1)
@@ -440,6 +440,51 @@ transform = Transform3D(-0.08520794, 0, -0.49268612, 0, 0.5, 0, 0.49268612, 0, -
 layers = 3
 texture = ExtResource("9_2ku1j")
 
+[node name="Interactable5" type="Node3D" parent="level1" unique_id=3907024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6487932, 4.426091, -12.431472)
+script = ExtResource("7_conm7")
+sign_text = "[SPACE] 跳跃"
+icon_texture = ExtResource("9_2ku1j")
+
+[node name="Area3D" type="Area3D" parent="level1/Interactable5" unique_id=594275020]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level1/Interactable5/Area3D" unique_id=1120123111]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.882957, -2.1187449, 2.84447)
+shape = SubResource("BoxShape3D_mtpvm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="level1/Interactable5" unique_id=870981570]
+
+[node name="Control" type="Control" parent="level1/Interactable5/CanvasLayer" unique_id=94003098]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="level1/Interactable5/CanvasLayer/Control" unique_id=1378375791]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 72.0
+offset_right = 1487.9788
+offset_bottom = 462.0
+texture = ExtResource("8_u3awl")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="level1/Interactable5/CanvasLayer/Control" unique_id=264618189]
+layout_mode = 0
+offset_left = 899.0
+offset_top = 180.0
+offset_right = 1343.0
+offset_bottom = 325.0
+text = "测试文字"
+label_settings = SubResource("LabelSettings_v7umd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="level1/Interactable5" unique_id=2132580227]
+transform = Transform3D(-0.08520794, 0, -0.49268612, 0, 0.5, 0, 0.49268612, 0, -0.08520794, -4.3735275, -2.6386166, 2.2910404)
+layers = 3
+texture = ExtResource("9_2ku1j")
+
 [node name="Deadzone" type="Area3D" parent="." unique_id=537855657]
 script = ExtResource("6_i2041")
 
@@ -480,4 +525,8 @@ offset_bottom = 1080.0
 [connection signal="area_exited" from="level1/Interactable4/Area3D" to="level1/Interactable4" method="_on_area_3d_area_exited"]
 [connection signal="body_entered" from="level1/Interactable4/Area3D" to="level1/Interactable4" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="level1/Interactable4/Area3D" to="level1/Interactable4" method="_on_area_3d_body_exited"]
+[connection signal="area_entered" from="level1/Interactable5/Area3D" to="level1/Interactable5" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="level1/Interactable5/Area3D" to="level1/Interactable5" method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="level1/Interactable5/Area3D" to="level1/Interactable5" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="level1/Interactable5/Area3D" to="level1/Interactable5" method="_on_area_3d_body_exited"]
 [connection signal="body_entered" from="Deadzone" to="Deadzone" method="_on_body_entered"]

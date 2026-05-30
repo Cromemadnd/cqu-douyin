@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://budac5k2g6ppi"]
+
+[ext_resource type="PackedScene" uid="uid://c3c45i5gx8u0y" path="res://assets/blend/level2.blend" id="1_d6fun"]
+
+[node name="level2" unique_id=921164658 instance=ExtResource("1_d6fun")]
+
+[node name="零部件1" parent="." index="0" unique_id=794777050]
+layers = 2
+
+[node name="零部件2" parent="." index="1" unique_id=1913762522]
+layers = 2
+
+[node name="零部件3" parent="." index="2" unique_id=1691317592]
+layers = 2
+
+[node name="零部件4" parent="." index="3" unique_id=311132537]
+layers = 2
+
+[node name="门-col" parent="." index="4" unique_id=312180233]
+layers = 2
