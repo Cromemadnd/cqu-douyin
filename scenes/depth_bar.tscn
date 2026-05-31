@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dqmj57mjs6pxc"]
 
 [ext_resource type="Script" uid="uid://c815i33ryxx0j" path="res://scripts/depth_bar.gd" id="1_g2rbc"]
-[ext_resource type="Texture2D" uid="uid://dn6aljemxsygs" path="res://assets/depthbar.png" id="2_y3khx"]
-[ext_resource type="Texture2D" uid="uid://drdavdy2dax6w" path="res://assets/septhdot.png" id="3_hbjo7"]
+[ext_resource type="Texture2D" uid="uid://dn6aljemxsygs" path="res://assets/sprites/depthbar.png" id="2_y3khx"]
+[ext_resource type="Texture2D" uid="uid://drdavdy2dax6w" path="res://assets/sprites/septhdot.png" id="3_hbjo7"]
 [ext_resource type="FontFile" uid="uid://kmslcl1wq3a3" path="res://assets/fonts/VonwaonBitmap-16px.ttf" id="4_gxi2d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ilo1b"]

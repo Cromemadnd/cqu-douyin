@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://6wddushy86hs" path="res://assets/sprites/bubble.png" id="8_u3awl"]
 [ext_resource type="Texture2D" uid="uid://bcyfj73k1ied6" path="res://assets/sprites/billboard.png" id="9_2ku1j"]
 [ext_resource type="FontFile" uid="uid://kmslcl1wq3a3" path="res://assets/fonts/VonwaonBitmap-16px.ttf" id="10_2ku1j"]
-[ext_resource type="Texture2D" uid="uid://lv2qreq1o5mo" path="res://assets/door_opened.png" id="11_gnai3"]
+[ext_resource type="Texture2D" uid="uid://lv2qreq1o5mo" path="res://assets/sprites/door_opened.png" id="11_gnai3"]
 [ext_resource type="PackedScene" uid="uid://dqmj57mjs6pxc" path="res://scenes/depth_bar.tscn" id="12_f31uk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
@@ -155,7 +155,7 @@ animations = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
-size = Vector3(0.6, 0.01, 1.2)
+size = Vector3(0.6, 1, 1.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
 albedo_color = Color(0, 0, 0, 1)
@@ -266,7 +266,7 @@ target_position = Vector3(0, -0.5, 0)
 [node name="Interactable" type="Node3D" parent="level1" unique_id=33450346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.978177, 4.5673914, -38.4659)
 script = ExtResource("7_conm7")
-sign_text = "[Z] 向 [5rex5aSE] 移动"
+sign_text = "[⬆] 向 [5rex5aSE] 移动"
 icon_texture = ExtResource("9_2ku1j")
 
 [node name="Area3D" type="Area3D" parent="level1/Interactable" unique_id=1072160745]
@@ -311,7 +311,7 @@ texture = ExtResource("9_2ku1j")
 [node name="Interactable2" type="Node3D" parent="level1" unique_id=93469710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.413149, 9.804544, -109.32541)
 script = ExtResource("7_conm7")
-sign_text = "[X] 向 [5rWF5bGC] 移动"
+sign_text = "[⬇] 向 [5rWF5bGC] 移动"
 icon_texture = ExtResource("9_2ku1j")
 
 [node name="Area3D" type="Area3D" parent="level1/Interactable2" unique_id=1505233109]

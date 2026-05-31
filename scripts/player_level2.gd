@@ -26,9 +26,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# 强行锁死 X 和 Z 轴旋转，确保渲染前绝对摆正
-	#rotation.x = 0
-	rotation.y = PI / 2
-	#rotation.z = 0
+	rotation.x = 0
+	#rotation.y = PI / 2
+	rotation.z = 0
 	
 	# 同步网格物体位置
 	%CSGPlayer.global_transform = self.global_transform
@@ -51,10 +51,10 @@ func apply_gravity(delta: float) -> void:
 func handle_rotation_and_movement(delta: float) -> float:
 	var move_input := Input.get_axis("ui_right", "ui_left") 
 	var depth_input := Input.get_axis("ui_x", "ui_z") 
-	# var rotate_input := Input.get_axis("ui_up", "ui_down") 
+	var rotate_input := Input.get_axis("ui_q", "ui_e") 
 
 	# 处理 Y 轴自主旋转
-	# rotate_y(rotate_input * rotate_speed * delta)
+	rotate_y(rotate_input * rotate_speed * delta)
 	
 	# 计算基于当前朝向的原始期望移动速度
 	var forward_dir := -global_transform.basis.x
