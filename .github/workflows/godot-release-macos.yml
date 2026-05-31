@@ -2,6 +2,7 @@ name: Godot macOS Release
 
 on:
   push:
+    branches: [main]
     tags:
       - "v*"
   workflow_dispatch:
@@ -47,9 +48,18 @@ jobs:
         run: |
           mkdir -p build/macos dist
           godot --headless --verbose --export-release "macOS" build/macos/CQUDouyin.zip
+          find build/macos -maxdepth 2 -type f -print
+          test -s build/macos/CQUDouyin.zip
           cp build/macos/CQUDouyin.zip "dist/${RELEASE_NAME}.zip"
+          test -s "dist/${RELEASE_NAME}.zip"
 
       - name: Upload macOS build to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || 'macos-latest' }}
+          target_commitish: ${{ github.sha }}
+          name: ${{ github.ref_type == 'tag' && github.ref_name || 'Latest macOS Build' }}
+          prerelease: ${{ github.ref_type != 'tag' }}
+          overwrite_files: true
+          fail_on_unmatched_files: true
           files: dist/${{ env.RELEASE_NAME }}.zip

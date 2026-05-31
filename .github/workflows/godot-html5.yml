@@ -43,10 +43,14 @@ jobs:
       - name: Export Web build
         run: |
           mkdir -p build/web
-          godot --headless --verbose --export-release "Web" build/web/CQUDouyin.html
+          godot --headless --verbose --export-release "Web" build/web/index.html
+          find build/web -maxdepth 2 -type f -print
+          test -s build/web/index.html
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build/web
           branch: gh-pages
+          clean: true
+          single-commit: true

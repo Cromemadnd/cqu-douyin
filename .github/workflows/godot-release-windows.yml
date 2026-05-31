@@ -2,6 +2,7 @@ name: Godot Windows Release
 
 on:
   push:
+    branches: [main]
     tags:
       - "v*"
   workflow_dispatch:
@@ -47,10 +48,19 @@ jobs:
         run: |
           mkdir -p build/windows dist
           godot --headless --verbose --export-release "Windows Desktop" build/windows/CQUDouyin.exe
+          find build/windows -maxdepth 2 -type f -print
+          test -s build/windows/CQUDouyin.exe
           cd build/windows
           zip -r "../../dist/${RELEASE_NAME}.zip" .
+          test -s "../../dist/${RELEASE_NAME}.zip"
 
       - name: Upload Windows build to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || 'windows-latest' }}
+          target_commitish: ${{ github.sha }}
+          name: ${{ github.ref_type == 'tag' && github.ref_name || 'Latest Windows Build' }}
+          prerelease: ${{ github.ref_type != 'tag' }}
+          overwrite_files: true
+          fail_on_unmatched_files: true
           files: dist/${{ env.RELEASE_NAME }}.zip
