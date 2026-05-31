@@ -1,0 +1,55 @@
+name: Godot macOS Release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  GODOT_VERSION: 4.6-stable
+  GODOT_TEMPLATES_VERSION: 4.6.stable
+  GODOT_EXECUTABLE: Godot_v4.6-stable_linux.x86_64
+  RELEASE_NAME: CQUDouyin-macos-universal
+
+jobs:
+  release-macos:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y unzip zip
+
+      - name: Install Godot
+        run: |
+          curl -L -o godot.zip "https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}/Godot_v4.6-stable_linux.x86_64.zip"
+          unzip -q godot.zip
+          chmod +x "${GODOT_EXECUTABLE}"
+          sudo mv "${GODOT_EXECUTABLE}" /usr/local/bin/godot
+
+      - name: Install export templates
+        run: |
+          curl -L -o export_templates.tpz "https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}/Godot_v4.6-stable_export_templates.tpz"
+          mkdir -p "${HOME}/.local/share/godot/export_templates/${GODOT_TEMPLATES_VERSION}"
+          unzip -q export_templates.tpz
+          mv templates/* "${HOME}/.local/share/godot/export_templates/${GODOT_TEMPLATES_VERSION}/"
+
+      - name: Import project
+        run: godot --headless --import --quit
+
+      - name: Export macOS build
+        run: |
+          mkdir -p build/macos dist
+          godot --headless --verbose --export-release "macOS" build/macos/CQUDouyin.zip
+          cp build/macos/CQUDouyin.zip "dist/${RELEASE_NAME}.zip"
+
+      - name: Upload macOS build to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/${{ env.RELEASE_NAME }}.zip
