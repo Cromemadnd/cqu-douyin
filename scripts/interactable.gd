@@ -2,7 +2,7 @@ extends Node3D
 
 const FlashbackOverlay := preload("res://scripts/flashback_overlay.gd")
 const LEVER_ON_TEXTURE := preload("res://assets/sprites/lever_on.png")
-const DOOR_OPEN_TEXTURE := preload("res://assets/door_opened.png")
+const DOOR_OPEN_TEXTURE := preload("res://assets/sprites/door_opened.png")
 
 # 定义交互类型枚举
 enum InteractType { LEVER, SIGNBOARD, KEY, DOOR }

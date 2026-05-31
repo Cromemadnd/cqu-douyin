@@ -14,6 +14,8 @@ config/name="CQUDouyin"
 run/main_scene="uid://blib4q8nn73ak"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="uid://58b66ncom127"
+config/icon="uid://6wddushy86hs"
 
 [autoload]
 

@@ -282,7 +282,7 @@ animations = [{
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
-size = Vector3(0.6, 0.5, 1.2)
+size = Vector3(0.6, 0.3, 1.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
 transparency = 1
