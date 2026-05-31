@@ -7,6 +7,11 @@ on:
 permissions:
   contents: write
 
+env:
+  GODOT_VERSION: 4.6-stable
+  GODOT_TEMPLATES_VERSION: 4.6.stable
+  GODOT_EXECUTABLE: Godot_v4.6-stable_linux.x86_64
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,16 +20,30 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Godot Web Export
-        uses: firebelley/godot-export@v5.2.0
-        with:
-          godot_executable_download_url: https://github.com/godotengine/godot-builds/releases/download/4.6-stable/Godot_v4.6-stable_linux.x86_64.zip
-          godot_export_templates_download_url: https://github.com/godotengine/godot-builds/releases/download/4.6-stable/Godot_v4.6-stable_export_templates.tpz
-          relative_project_path: ./
-          relative_export_path: ./build/web
-          export_preset: Web
-          archive_output: false
-          cache: true
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y unzip
+
+      - name: Install Godot
+        run: |
+          curl -L -o godot.zip "https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}/Godot_v4.6-stable_linux.x86_64.zip"
+          unzip -q godot.zip
+          chmod +x "${GODOT_EXECUTABLE}"
+          sudo mv "${GODOT_EXECUTABLE}" /usr/local/bin/godot
+
+      - name: Install export templates
+        run: |
+          curl -L -o export_templates.tpz "https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}/Godot_v4.6-stable_export_templates.tpz"
+          mkdir -p "${HOME}/.local/share/godot/export_templates/${GODOT_TEMPLATES_VERSION}"
+          unzip -q export_templates.tpz
+          mv templates/* "${HOME}/.local/share/godot/export_templates/${GODOT_TEMPLATES_VERSION}/"
+
+      - name: Import project
+        run: godot --headless --import --quit
+
+      - name: Export Web build
+        run: |
+          mkdir -p build/web
+          godot --headless --verbose --export-release "Web" build/web/CQUDouyin.html
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

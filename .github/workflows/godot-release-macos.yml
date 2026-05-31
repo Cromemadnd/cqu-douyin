@@ -13,7 +13,7 @@ env:
   GODOT_VERSION: 4.6-stable
   GODOT_TEMPLATES_VERSION: 4.6.stable
   GODOT_EXECUTABLE: Godot_v4.6-stable_linux.x86_64
-  RELEASE_NAME: CQUDouyin-macos-universal
+  RELEASE_NAME: CQUDouyin-macos-x86_64
 
 jobs:
   release-macos:
